@@ -18,11 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
                        appKey:(NSString *) appKey
                     pushToken:(NSData *) pushToken
          additionalParameters:(nullable NSDictionary *) additionalParameters
-         additionalIdentifier:(nullable NSString *) additionalIdentifier
                     isSandbox:(BOOL)isSandbox
-                   completion:(void(^)(NSString *deviceID, NSError* error)) completion;
+                   completion:(void(^)(NSString * _Nullable deviceID, NSError * _Nullable error)) completion;
 
-- (void)unregisterWithCompletion:(void(^)(NSError* error)) completion;
+- (void)unregisterWithCompletion:(void(^)(NSError * _Nullable error)) completion;
 
 NS_ASSUME_NONNULL_END
 
