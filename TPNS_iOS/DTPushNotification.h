@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)registerWithServerURL:(NSString *) serverURLString
                        appKey:(NSString *) appKey
                     pushToken:(NSData *) pushToken
-         additionalParameters:(nullable NSDictionary *) additionalParameters
+         additionalParameters:(nullable NSArray *) additionalParameters
                     isSandbox:(BOOL)isSandbox
                    completion:(void(^)(NSString * _Nullable deviceID, NSError * _Nullable error)) completion;
 
