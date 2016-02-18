@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DDB956EB1C72200400B352D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956EA1C72200400B352D0 /* main.m */; };
+		DDB956EE1C72200400B352D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956ED1C72200400B352D0 /* AppDelegate.m */; };
+		DDB956F11C72200400B352D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956F01C72200400B352D0 /* ViewController.m */; };
+		DDB956F41C72200400B352D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB956F21C72200400B352D0 /* Main.storyboard */; };
+		DDB956F61C72200400B352D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDB956F51C72200400B352D0 /* Assets.xcassets */; };
+		DDB956F91C72200400B352D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB956F71C72200400B352D0 /* LaunchScreen.storyboard */; };
+		DDB957011C72219700B352D0 /* TPNS_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB957001C72219700B352D0 /* TPNS_iOS.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DDB956E61C72200400B352D0 /* TPNS_iOS Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TPNS_iOS Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDB956EA1C72200400B352D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DDB956EC1C72200400B352D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DDB956ED1C72200400B352D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DDB956EF1C72200400B352D0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		DDB956F01C72200400B352D0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DDB956F31C72200400B352D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DDB956F51C72200400B352D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DDB956F81C72200400B352D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DDB956FA1C72200400B352D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDB957001C72219700B352D0 /* TPNS_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TPNS_iOS.framework; path = "../build/Debug-iphoneos/TPNS_iOS.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DDB956E31C72200400B352D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDB957011C72219700B352D0 /* TPNS_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DDB956DD1C72200400B352D0 = {
+			isa = PBXGroup;
+			children = (
+				DDB956E81C72200400B352D0 /* TPNS_iOS Sample App */,
+				DDB957021C7221A500B352D0 /* Frameworks */,
+				DDB956E71C72200400B352D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DDB956E71C72200400B352D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDB956E61C72200400B352D0 /* TPNS_iOS Sample App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DDB956E81C72200400B352D0 /* TPNS_iOS Sample App */ = {
+			isa = PBXGroup;
+			children = (
+				DDB956EC1C72200400B352D0 /* AppDelegate.h */,
+				DDB956ED1C72200400B352D0 /* AppDelegate.m */,
+				DDB956EF1C72200400B352D0 /* ViewController.h */,
+				DDB956F01C72200400B352D0 /* ViewController.m */,
+				DDB956F21C72200400B352D0 /* Main.storyboard */,
+				DDB956F51C72200400B352D0 /* Assets.xcassets */,
+				DDB956F71C72200400B352D0 /* LaunchScreen.storyboard */,
+				DDB956FA1C72200400B352D0 /* Info.plist */,
+				DDB956E91C72200400B352D0 /* Supporting Files */,
+			);
+			path = "TPNS_iOS Sample App";
+			sourceTree = "<group>";
+		};
+		DDB956E91C72200400B352D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDB956EA1C72200400B352D0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DDB957021C7221A500B352D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDB957001C72219700B352D0 /* TPNS_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DDB956E51C72200400B352D0 /* TPNS_iOS Sample App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDB956FD1C72200400B352D0 /* Build configuration list for PBXNativeTarget "TPNS_iOS Sample App" */;
+			buildPhases = (
+				DDB956E21C72200400B352D0 /* Sources */,
+				DDB956E31C72200400B352D0 /* Frameworks */,
+				DDB956E41C72200400B352D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TPNS_iOS Sample App";
+			productName = "TPNS_iOS Sample App";
+			productReference = DDB956E61C72200400B352D0 /* TPNS_iOS Sample App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DDB956DE1C72200400B352D0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Deutsche Telekom AG";
+				TargetAttributes = {
+					DDB956E51C72200400B352D0 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = DDB956E11C72200400B352D0 /* Build configuration list for PBXProject "TPNS_iOS Sample App" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DDB956DD1C72200400B352D0;
+			productRefGroup = DDB956E71C72200400B352D0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DDB956E51C72200400B352D0 /* TPNS_iOS Sample App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DDB956E41C72200400B352D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDB956F91C72200400B352D0 /* LaunchScreen.storyboard in Resources */,
+				DDB956F61C72200400B352D0 /* Assets.xcassets in Resources */,
+				DDB956F41C72200400B352D0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DDB956E21C72200400B352D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDB956F11C72200400B352D0 /* ViewController.m in Sources */,
+				DDB956EE1C72200400B352D0 /* AppDelegate.m in Sources */,
+				DDB956EB1C72200400B352D0 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DDB956F21C72200400B352D0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDB956F31C72200400B352D0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DDB956F71C72200400B352D0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDB956F81C72200400B352D0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DDB956FB1C72200400B352D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DDB956FC1C72200400B352D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DDB956FE1C72200400B352D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "TPNS_iOS Sample App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.telekom.TPNS-iOS-Sample-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DDB956FF1C72200400B352D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "TPNS_iOS Sample App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.telekom.TPNS-iOS-Sample-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DDB956E11C72200400B352D0 /* Build configuration list for PBXProject "TPNS_iOS Sample App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDB956FB1C72200400B352D0 /* Debug */,
+				DDB956FC1C72200400B352D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DDB956FD1C72200400B352D0 /* Build configuration list for PBXNativeTarget "TPNS_iOS Sample App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDB956FE1C72200400B352D0 /* Debug */,
+				DDB956FF1C72200400B352D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DDB956DE1C72200400B352D0 /* Project object */;
+}
