@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,85 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TPNS Sample App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZk-1c-tye">
+                                <rect key="frame" x="227" y="82" width="146" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="He8-7s-5I1"/>
+                                    <constraint firstAttribute="height" constant="21" id="UYk-gX-KPB"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="146" id="cO7-Re-RLr"/>
+                                    <constraint firstAttribute="width" constant="146" id="lBG-6D-AQ3"/>
+                                    <constraint firstAttribute="width" constant="146" id="s9c-tC-pDV"/>
+                                    <constraint firstAttribute="height" constant="21" id="zEa-GJ-Cac"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="He8-7s-5I1"/>
+                                        <exclude reference="UYk-gX-KPB"/>
+                                        <exclude reference="cO7-Re-RLr"/>
+                                        <exclude reference="s9c-tC-pDV"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9og-zp-gCm">
+                                <rect key="frame" x="264" y="265" width="72" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="Agi-rS-Xpr"/>
+                                    <constraint firstAttribute="height" constant="30" id="BiZ-Ki-GOG"/>
+                                    <constraint firstAttribute="width" constant="72" id="dJ8-w7-eUS"/>
+                                    <constraint firstAttribute="height" constant="30" id="tXC-BM-RTg"/>
+                                </constraints>
+                                <state key="normal" title="Unregister"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BiZ-Ki-GOG"/>
+                                        <exclude reference="dJ8-w7-eUS"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="unregisterAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iAc-vi-uHr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration is perfomed upon launch of the App. To unregister, use the Button below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-0a-rEX">
+                                <rect key="frame" x="108" y="111" width="384" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="384" id="C4b-qG-yKp"/>
+                                    <constraint firstAttribute="height" constant="90" id="Qlj-y0-2CX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="VDp-mR-5Vd"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="384" id="VVm-JL-o7B"/>
+                                    <constraint firstAttribute="height" constant="90" id="Wsm-mz-oIs"/>
+                                    <constraint firstAttribute="width" constant="384" id="m2Z-Hq-bFQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="C4b-qG-yKp"/>
+                                        <exclude reference="Qlj-y0-2CX"/>
+                                        <exclude reference="VDp-mR-5Vd"/>
+                                        <exclude reference="VVm-JL-o7B"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fZk-1c-tye" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Aq-aC-ahQ"/>
+                            <constraint firstItem="9og-zp-gCm" firstAttribute="top" secondItem="Qm4-0a-rEX" secondAttribute="bottom" constant="64" id="9hd-HL-ynA"/>
+                            <constraint firstItem="fZk-1c-tye" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="62" id="BND-6S-ExT"/>
+                            <constraint firstItem="Qm4-0a-rEX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F5r-Kc-MQX"/>
+                            <constraint firstItem="Qm4-0a-rEX" firstAttribute="top" secondItem="fZk-1c-tye" secondAttribute="bottom" constant="8" id="Sbb-Ut-fMA"/>
+                            <constraint firstItem="9og-zp-gCm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gZG-bT-gZ3"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="610" y="318"/>
         </scene>
     </scenes>
 </document>

@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)unregisterAction:(id)sender;
 
 @end
 

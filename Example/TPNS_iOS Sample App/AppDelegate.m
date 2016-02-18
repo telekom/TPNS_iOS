@@ -32,14 +32,48 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+    
+    NSDictionary *params = @{@"key":@"SomeAdditionalID", @"value":@(4711)};
+    
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
     [tpns registerWithServerURL:@"https://tpns-preprod.molutions.de/TPNS"
                          appKey:@"LoadTestApp3"
                       pushToken:deviceToken
-           additionalParameters:@{@"someAdditionalID":@(4711)}
+           additionalParameters:@[params]
                       isSandbox:YES
                      completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
-                         //TODO:
+                         
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             NSString *title = nil;
+                             NSString *message = nil;
+                             
+                             if(error)
+                             {
+                                 title = @"Error";
+                                 message = [NSString stringWithFormat:@"The device could not be registered with TPNS. Errormessage was \"%@\"", error.localizedDescription];
+                             } else {
+                                 title = @"Success";
+                                 message = [NSString stringWithFormat:@"The device was successfully registered with TPNS. TPNS deviceID is is \"%@\"", deviceID];
+                             }
+                             
+                             UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                                            message:message
+                                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                             
+                             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                                style:UIAlertActionStyleDefault
+                                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                                  [alert removeFromParentViewController];
+                                                                              }];
+                             
+                             [alert addAction:okAction];
+                             
+                             UIViewController *rootViewController = self.window.rootViewController;
+                             [rootViewController showViewController:alert sender:self];
+                         });
+                       
+                         
+                         
     }];
     
 }
