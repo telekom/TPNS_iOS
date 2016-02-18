@@ -12,8 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DTPushNotification : NSObject
 
+//TODO: Documentation
 + (DTPushNotification *)sharedInstance;
 
+//TODO: Documentation
 - (void)registerWithServerURL:(NSString *) serverURLString
                        appKey:(NSString *) appKey
                     pushToken:(NSData *) pushToken
@@ -21,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
                     isSandbox:(BOOL)isSandbox
                    completion:(void(^)(NSString * _Nullable deviceID, NSError * _Nullable error)) completion;
 
+//TODO: Documentation
 - (void)unregisterWithCompletion:(void(^)(NSError * _Nullable error)) completion;
 
 NS_ASSUME_NONNULL_END
