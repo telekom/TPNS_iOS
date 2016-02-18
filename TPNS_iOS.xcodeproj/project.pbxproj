@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DDB956D11C71CF9200B352D0 /* TPNS_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D01C71CF9200B352D0 /* TPNS_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DDB956D91C71F12200B352D0 /* DTPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D81C71F12200B352D0 /* DTPushNotification.h */; };
+		DDB956D91C71F12200B352D0 /* DTPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D81C71F12200B352D0 /* DTPushNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDB956DB1C71F12700B352D0 /* DTPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956DA1C71F12700B352D0 /* DTPushNotification.m */; };
 /* End PBXBuildFile section */
 
