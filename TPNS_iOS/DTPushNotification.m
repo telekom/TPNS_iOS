@@ -70,24 +70,6 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                     isSandbox:(BOOL)isSandbox
                    completion:(void(^)(NSString *deviceID, NSError* error)) completion
 {
-    /*
-     POST {SERVER_URL}/api/device/register
-     
-     {
-        "deviceId":"deviceId", 
-        "deviceRegistrationId":"regId", 
-        "applicationKey":"appKey", 
-        "applicationType":"IOS", 
-        "additionalParameters":[
-        {
-            "key":"location", 
-            "value":"darmstadt"
-        }, {
-            "key":"example",
-            "value":"house" }
-        ] 
-     }
-     */
     
     NSParameterAssert(serverURLString != nil);
     NSParameterAssert(appKey != nil);
@@ -101,7 +83,6 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     self.registrationInProgress = YES;
     
     if (self.deviceId != nil || self.appKey != nil || self.serverURLString != nil) {
-        NSLog(@"WARN: Potential use of unbalanced register/unregister");
     }
     
     NSCharacterSet * trimSet = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
@@ -144,28 +125,35 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                         completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                             
                             if (error == nil && response.statusCode == 200) {
-                                //Success
                                 completion(deviceID,nil);
                             } else {
-                                //TODO: Impl.
-                                /*
-                                 
-                                 {
-                                    errors =     (
-                                        {
-                                            errorCode = "UNKNOWN_ERROR";
-                                            field = "<null>";
-                                            message = "[Source: org.apache.cxf.transport.http.AbstractHTTPDestination$1@5c007091; line: 1, column: 112]";
-                                        }
-                                    );
-                                    message = "Registration Failed";
-                                    success = 0;
-                                 }
-                                 
-                                 */
+                                NSString *originalErrorMessage = [responseData objectForKey:@"message"];
+                                NSString *description;
                                 
+                                switch (response.statusCode) {
+                                    case 422:
+                                        description = [NSString stringWithFormat:@"Appkey, DeviceId or Application Type empty / ivalid (original error:%@)", originalErrorMessage];
+                                        break;
+                                    case 500:
+                                        description = [NSString stringWithFormat:@"Internal Server Error (original error:%@)", originalErrorMessage];
+                                        break;
+                                    case 400:
+                                        description = [NSString stringWithFormat:@"Bad Request (original error:%@)", originalErrorMessage];
+                                        break;
+                                    case 403:
+                                        description = [NSString stringWithFormat:@"ApiKey invalid / not authorized (original error:%@)", originalErrorMessage];
+                                        break;
+                                    default:
+                                        description = [NSString stringWithFormat:@"Request failed (original error:%@)", originalErrorMessage];
+                                        break;
+                                }
                                 
-                                completion(nil, error);
+                                NSDictionary *userInfo = @{NSLocalizedDescriptionKey: description};
+                                NSError *customError = [[NSError alloc] initWithDomain:DTPNSErrorDomain
+                                                                                  code:response.statusCode
+                                                                              userInfo:userInfo];
+                                
+                                completion(nil, customError);
                             }
                             
                             self.registrationInProgress = NO;
@@ -176,10 +164,6 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
 
 - (void)unregisterWithCompletion:(void(^)(NSError* error)) completion
 {
-    /*
-     PUT {SERVER_URL}/api/application/{application_key}/device/{device_id}/unregister
-    */
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (self.serverURLString == nil) {
         self.serverURLString = [defaults objectForKey:DTPNSUserDefaultsServerURLString];
@@ -194,7 +178,12 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     }
     
     if (self.serverURLString == nil|| self.appKey == nil || self.deviceId == nil) {
-        //TODO: Fail with error and abort
+        NSError *customError = [[NSError alloc] initWithDomain:DTPNSErrorDomain
+                                                          code:0
+                                                      userInfo:@{NSLocalizedDescriptionKey:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."}];
+        completion(customError);
+        return;
+        
     }
     
     NSURL *reqURL = [NSURL URLWithString:self.serverURLString];
@@ -213,11 +202,8 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                       completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                          
                           if (error == nil && response.statusCode == 200) {
-                              //Success
-                              
                               self.serverURLString = nil;
                               self.deviceId = nil;
-                              self.registrationInProgress = nil;
                               self.registrationInProgress = NO;
                               
                               NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -228,7 +214,10 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                               
                               completion(nil);
                           } else {
-                              //TODO: Impl. error case
+                              //According to TPNS Backend Dev Team Server ALWAYS send a 200,
+                              //even, if the device has never been registered, or the
+                              //app sends a wrong appID. This path only handles
+                              //underlying connection errors
                               completion(error);
                           }
   
@@ -253,7 +242,6 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     [request setURL:url];
     
     if (bodyParameters != nil) {
-        //TODO: Handle Error
         NSData *bodyData = [NSJSONSerialization dataWithJSONObject:bodyParameters
                                                            options:0
                                                              error:nil];
