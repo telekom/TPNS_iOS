@@ -192,9 +192,11 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
         NSError *customError = [[NSError alloc] initWithDomain:DTPNSErrorDomain
                                                           code:0
                                                       userInfo:@{NSLocalizedDescriptionKey:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."}];
-        completion(customError);
+        if (completion) {
+            completion(customError);
+        }
+
         return;
-        
     }
     
     NSURL *reqURL = [NSURL URLWithString:self.serverURLString];
