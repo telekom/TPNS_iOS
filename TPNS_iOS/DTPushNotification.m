@@ -129,8 +129,12 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                    queryParameters:nil
                         completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                             
-                            if (error == nil && response.statusCode == 200) {
-                                completion(deviceID,nil);
+                            if (!error && 200 == response.statusCode) {
+                                
+                                if (completion) {
+                                    completion(deviceID, nil);
+                                }
+
                             } else {
                                 NSString *originalErrorMessage = [responseData objectForKey:@"message"];
                                 NSString *description;
@@ -158,7 +162,10 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                                                                                   code:response.statusCode
                                                                               userInfo:userInfo];
                                 
-                                completion(nil, customError);
+                                if (completion) {
+                                    completion(nil, customError);
+                                }
+
                             }
                             
                             self.registrationInProgress = NO;
