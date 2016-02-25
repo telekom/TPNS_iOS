@@ -176,19 +176,19 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
 - (void)unregisterWithCompletion:(void(^)(NSError* error)) completion
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (self.serverURLString == nil) {
+    if (!self.serverURLString.length) {
         self.serverURLString = [defaults objectForKey:DTPNSUserDefaultsServerURLString];
     }
     
-    if (self.appKey == nil) {
+    if (!self.appKey.length) {
         self.appKey = [defaults objectForKey:DTPNSUserDefaultsAppKey];
     }
     
-    if (self.deviceId) {
+    if (!self.deviceId.length) {
         self.deviceId = [defaults objectForKey:DTPNSUserDefaultsDeviceID];
     }
     
-    if (self.serverURLString == nil|| self.appKey == nil || self.deviceId == nil) {
+    if (!self.serverURLString.length || !self.appKey.length || !self.deviceId.length) {
         NSError *customError = [[NSError alloc] initWithDomain:DTPNSErrorDomain
                                                           code:0
                                                       userInfo:@{NSLocalizedDescriptionKey:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."}];
