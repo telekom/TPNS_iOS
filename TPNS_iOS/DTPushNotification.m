@@ -31,7 +31,9 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
 
 
 @implementation DTPushNotification
-
+@synthesize serverURLString = _serverURLString;
+@synthesize appKey = _appKey;
+@synthesize deviceId = _deviceId;
 
 - (id)init
 {
@@ -50,6 +52,77 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
         
     }
     return self;
+}
+
++ (NSString *)userDefaultsValueForKey:(NSString *)key {
+    NSParameterAssert(key.length);
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:key];
+}
+
++ (void)setUserDefaultsValue:(id)value forKey:(NSString *)key {
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (value) {
+        [defaults setObject:value forKey:key];
+    } else {
+        [defaults removeObjectForKey:key];
+    }
+    [defaults synchronize];
+}
+
+- (NSString *)serverURLString {
+
+    if (!_serverURLString) {
+        _serverURLString = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsServerURLString];
+    }
+
+    return _serverURLString;
+}
+
+- (void)setServerURLString:(NSString *)serverURLString {
+    if (_serverURLString == serverURLString) {
+        return;
+    }
+    
+    _serverURLString = serverURLString;
+    [[self class] setUserDefaultsValue:_serverURLString forKey:DTPNSUserDefaultsServerURLString];
+}
+
+- (NSString *)appKey {
+    
+    if (!_appKey) {
+        _appKey = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsAppKey];
+    }
+    
+    return _appKey;
+}
+
+- (void)setAppKey:(NSString *)appKey {
+    if (_appKey == appKey) {
+        return;
+    }
+    
+    _appKey = appKey;
+    [[self class] setUserDefaultsValue:_appKey forKey:DTPNSUserDefaultsAppKey];
+}
+
+- (NSString *)deviceId {
+    if (!_deviceId) {
+        _deviceId = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsDeviceID];
+    }
+
+    return _deviceId;
+}
+
+- (void)setDeviceId:(NSString *)deviceId {
+    if (_deviceId == deviceId) {
+        return;
+    }
+    
+    _deviceId = deviceId;
+    [[self class] setUserDefaultsValue:_appKey forKey:DTPNSUserDefaultsDeviceID];
 }
 
 #pragma mark - Public methods
@@ -96,24 +169,15 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     
     self.serverURLString = serverURLString;
     self.appKey = appKey;
-    
-    
-    NSString *deviceID = [NSUUID UUID].UUIDString;
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults setObject:serverURLString forKey:DTPNSUserDefaultsServerURLString];
-    [defaults setObject:appKey forKey:DTPNSUserDefaultsAppKey];
-    [defaults setObject:deviceID forKey:DTPNSUserDefaultsDeviceID];
-    [defaults synchronize];
+    self.deviceId = [NSUUID UUID].UUIDString;
     
     NSString *applicationType = isSandbox ? DTPNSApplicationTypeiOSSandbox : DTPNSApplicationTypeiOS;
     
-    NSDictionary *bodyParams = @{@"deviceId":deviceID,
-                                 @"deviceRegistrationId":pushTokenString,
-                                 @"applicationKey": appKey,
-                                 @"applicationType": applicationType,
-                                 @"additionalParameters": additionalParameters};
+    NSDictionary *bodyParams = @{@"deviceId" : self.deviceId,
+                                 @"deviceRegistrationId" : pushTokenString,
+                                 @"applicationKey" : self.appKey,
+                                 @"applicationType" : applicationType,
+                                 @"additionalParameters" : additionalParameters};
     
     NSURL *reqURL = [NSURL URLWithString:self.serverURLString];
     reqURL = [reqURL URLByAppendingPathComponent:@"/api/device/register"];
@@ -131,7 +195,7 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                             if (!error && 200 == response.statusCode) {
                                 
                                 if (completion) {
-                                    completion(deviceID, nil);
+                                    completion(self.deviceId, nil);
                                 }
 
                             } else {
@@ -173,20 +237,7 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     
 }
 
-- (void)unregisterWithCompletion:(void(^)(NSError* error)) completion
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (!self.serverURLString.length) {
-        self.serverURLString = [defaults objectForKey:DTPNSUserDefaultsServerURLString];
-    }
-    
-    if (!self.appKey.length) {
-        self.appKey = [defaults objectForKey:DTPNSUserDefaultsAppKey];
-    }
-    
-    if (!self.deviceId.length) {
-        self.deviceId = [defaults objectForKey:DTPNSUserDefaultsDeviceID];
-    }
+- (void)unregisterWithCompletion:(void(^)(NSError* error))completion {
     
     if (!self.serverURLString.length || !self.appKey.length || !self.deviceId.length) {
         NSError *customError = [[NSError alloc] initWithDomain:DTPNSErrorDomain
