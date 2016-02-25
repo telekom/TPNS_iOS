@@ -205,8 +205,7 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     
     NSMutableURLRequest *req = [self baseJSONRequestWithURL:reqURL
                                              bodyParameters:nil];
-    
-    [req setHTTPMethod:@"PUT"];
+    req.HTTPMethod = @"PUT";
     
     [self executeDataTaskWithURL:reqURL
                          request:req
