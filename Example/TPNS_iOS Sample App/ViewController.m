@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-@import TPNS_iOS;
+#import "DTPushNotification.h"
 
 @interface ViewController ()
 
@@ -19,35 +19,26 @@
 - (IBAction)unregisterAction:(id)sender
 {
     [[DTPushNotification sharedInstance] unregisterWithCompletion:^(NSError * _Nullable error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *title = nil;
-            NSString *message = nil;
-            
-            if(error)
-            {
-                title = @"Error";
-                message = [NSString stringWithFormat:@"The device could not be unregistered with TPNS. Errormessage was \"%@\"", error.localizedDescription];
-            } else {
-                title = @"Success";
-                message = @"The device was successfully unregistered with TPNS";
-            }
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
-                                                                           message:message
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                               style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction * _Nonnull action) {
-                                                                 [alert removeFromParentViewController];
-                                                             }];
-            
-            [alert addAction:okAction];
-            
-            [self showViewController:alert sender:self];
-        });
-
-    }];
+        
+        NSString *title = @"Success";
+        NSString *message = @"The device was successfully unregistered with TPNS";;
+        
+        if (error) {
+            title = @"Error";
+            message = [NSString stringWithFormat:@"The device could not be unregistered with TPNS. Errormessage was \"%@\"", error.localizedDescription];
+        }
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                       message:message
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+     }];
 }
 
 @end
