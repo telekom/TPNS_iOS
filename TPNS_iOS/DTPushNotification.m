@@ -35,8 +35,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 @synthesize appKey = _appKey;
 @synthesize deviceId = _deviceId;
 
-- (id)init
-{
+- (id)init {
+    
     self = [super init];
     if (self) {
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -126,8 +126,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 #pragma mark - Public methods
-+ (DTPushNotification*)sharedInstance
-{
++ (DTPushNotification*)sharedInstance {
+    
     static dispatch_once_t pred;
     static DTPushNotification *instance = nil;
     
