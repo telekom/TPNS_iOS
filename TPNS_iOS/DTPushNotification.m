@@ -238,7 +238,7 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
 }
 
 #pragma mark - Base Request
-- (NSMutableURLRequest*)baseJSONRequestWithURL:(NSURL *) url
+- (NSMutableURLRequest*)baseJSONRequestWithURL:(NSURL *)url
                                 bodyParameters:(NSDictionary *)bodyParameters
 {
     
