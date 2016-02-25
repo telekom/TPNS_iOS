@@ -7,8 +7,7 @@
 //
 
 #import "AppDelegate.h"
-//#import "TPNS_iOS.h"
-@import TPNS_iOS;
+#import "DTPushNotification.h"
 
 @interface AppDelegate ()
 
@@ -42,38 +41,27 @@
                       isSandbox:YES
                      completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
                          
-                         dispatch_async(dispatch_get_main_queue(), ^{
-                             NSString *title = nil;
-                             NSString *message = nil;
-                             
-                             if(error)
-                             {
-                                 title = @"Error";
-                                 message = [NSString stringWithFormat:@"The device could not be registered with TPNS. Errormessage was \"%@\"", error.localizedDescription];
-                             } else {
-                                 title = @"Success";
-                                 message = [NSString stringWithFormat:@"The device was successfully registered with TPNS. TPNS deviceID is is \"%@\"", deviceID];
-                             }
-                             
-                             UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
-                                                                                            message:message
-                                                                                     preferredStyle:UIAlertControllerStyleAlert];
-                             
-                             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                                style:UIAlertActionStyleDefault
-                                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                                  [alert removeFromParentViewController];
-                                                                              }];
-                             
-                             [alert addAction:okAction];
-                             
-                             UIViewController *rootViewController = self.window.rootViewController;
-                             [rootViewController showViewController:alert sender:self];
-                         });
-                       
+                         NSString *title = @"Success";
+                         NSString *message = [NSString stringWithFormat:@"The device was successfully registered with TPNS. TPNS deviceID is is \"%@\"", deviceID];
                          
+                         if (error) {
+                             title = @"Error";
+                             message = [NSString stringWithFormat:@"The device could not be registered with TPNS. Errormessage was \"%@\"", error.localizedDescription];
+                         }
                          
-    }];
+                         UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                                        message:message
+                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+                         
+                         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                            style:UIAlertActionStyleDefault
+                                                                          handler:nil];
+                         
+                         [alert addAction:okAction];
+                         
+                         UIViewController *rootViewController = self.window.rootViewController;
+                         [rootViewController presentViewController:alert animated:YES completion:nil];
+                     }];
     
 }
 
