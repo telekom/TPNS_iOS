@@ -69,15 +69,15 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     } else {
         [defaults removeObjectForKey:key];
     }
+    
     [defaults synchronize];
 }
 
 - (NSString *)serverURLString {
-
     if (!_serverURLString) {
         _serverURLString = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsServerURLString];
     }
-
+    
     return _serverURLString;
 }
 
@@ -91,7 +91,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (NSString *)appKey {
-    
     if (!_appKey) {
         _appKey = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsAppKey];
     }
@@ -112,7 +111,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     if (!_deviceId) {
         _deviceId = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsDeviceID];
     }
-
+    
     return _deviceId;
 }
 
