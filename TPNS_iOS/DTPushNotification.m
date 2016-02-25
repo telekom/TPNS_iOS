@@ -266,13 +266,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                           if (!error && 200 == response.statusCode) {
                               self.serverURLString = nil;
                               self.deviceId = nil;
+                              self.appKey = nil;
                               self.registrationInProgress = NO;
-                              
-                              NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                              [defaults removeObjectForKey:DTPNSUserDefaultsDeviceID];
-                              [defaults removeObjectForKey:DTPNSUserDefaultsAppKey];
-                              [defaults removeObjectForKey:DTPNSUserDefaultsServerURLString];
-                              [defaults synchronize];
 
                           } else {
                               //According to TPNS Backend Dev Team Server ALWAYS send a 200,
