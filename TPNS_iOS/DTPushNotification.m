@@ -97,9 +97,8 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     self.serverURLString = serverURLString;
     self.appKey = appKey;
     
-    CFUUIDRef uuidObject = CFUUIDCreate(kCFAllocatorDefault);
-    NSString *deviceID = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuidObject);
-    CFRelease(uuidObject);
+    
+    NSString *deviceID = [NSUUID UUID].UUIDString;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
