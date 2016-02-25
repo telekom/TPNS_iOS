@@ -56,7 +56,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 + (void)setUserDefaultsValue:(id)value forKey:(NSString *)key {
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (value) {
         [defaults setObject:value forKey:key];
@@ -189,7 +188,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                 }
 
                             } else {
-                                NSString *originalErrorMessage = [responseData objectForKey:@"message"];
+                                NSString *originalErrorMessage = responseData[@"message"];
                                 NSString *description;
                                 
                                 switch (response.statusCode) {
@@ -227,11 +226,11 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
 }
 
-- (void)unregisterWithCompletion:(void(^)(NSError* error))completion {
+- (void)unregisterWithCompletion:(void(^)(NSError *error))completion {
     
     if (!self.serverURLString.length || !self.appKey.length || !self.deviceId.length) {
         NSError *customError = [[NSError alloc] initWithDomain:DTPNSErrorDomain
-                                                          code:0
+                                                          code:500
                                                       userInfo:@{NSLocalizedDescriptionKey:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."}];
         if (completion) {
             completion(customError);
@@ -277,7 +276,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 #pragma mark - Base Request
-- (NSMutableURLRequest*)baseJSONRequestWithURL:(NSURL *)url
+- (NSMutableURLRequest *)baseJSONRequestWithURL:(NSURL *)url
                                 bodyParameters:(NSDictionary *)bodyParameters
 {
     
@@ -297,7 +296,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
         if (!error) {
             request.HTTPBody = bodyData;
         }
-
     }
     
     return request;
@@ -313,8 +311,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                 
-                                                NSDictionary *responseDict = nil;
-                                                
+                                                NSDictionary *responseDict;
                                                 if (data) {
                                                     responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                                                 }
@@ -324,7 +321,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                                 }
 
     }];
-    
     
     [task resume];
 }
