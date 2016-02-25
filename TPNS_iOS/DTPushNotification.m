@@ -43,13 +43,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
         config.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyAlways;
         config.HTTPCookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
         self.session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:nil];
-        self.registrationInProgress = NO;
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        self.serverURLString = [defaults objectForKey:DTPNSUserDefaultsServerURLString];
-        self.appKey = [defaults objectForKey:DTPNSUserDefaultsAppKey];
-        self.deviceId = [defaults objectForKey:DTPNSUserDefaultsDeviceID];
-        
+        self.registrationInProgress = NO;        
     }
     return self;
 }
