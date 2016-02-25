@@ -283,7 +283,10 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                                                     responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                                                 }
                                                 
-                                                completion(responseDict, (NSHTTPURLResponse *) response, error);
+                                                if (completion) {
+                                                    completion(responseDict, (NSHTTPURLResponse *)response, error);
+                                                }
+
     }];
     
     
