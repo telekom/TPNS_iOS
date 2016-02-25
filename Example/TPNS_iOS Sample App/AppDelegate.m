@@ -23,9 +23,9 @@
     // Register the supported interaction types.
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    [application registerUserNotificationSettings:mySettings];
     
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    [application registerForRemoteNotifications];
     
     return YES;
 }
