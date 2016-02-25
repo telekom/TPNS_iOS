@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
                     pushToken:(NSData *)pushToken
          additionalParameters:(nullable NSArray *)additionalParameters
                     isSandbox:(BOOL)isSandbox
-                   completion:(void(^)(NSString *deviceID, NSError *error))completion;
+                   completion:(void(^)(NSString *deviceID, NSError * _Nullable error))completion;
 
 //TODO: Documentation
 - (void)unregisterWithCompletion:(void(^)(NSError * _Nullable error)) completion;

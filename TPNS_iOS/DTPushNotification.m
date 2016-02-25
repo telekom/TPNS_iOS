@@ -67,7 +67,7 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                     pushToken:(NSData *)pushToken
          additionalParameters:(nullable NSArray *)additionalParameters
                     isSandbox:(BOOL)isSandbox
-                   completion:(void(^)(NSString *deviceID, NSError *error))completion
+                   completion:(void(^)(NSString *deviceID, NSError * _Nullable error))completion
 {
     
     NSParameterAssert(serverURLString != nil);
