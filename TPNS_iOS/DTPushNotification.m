@@ -120,8 +120,7 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     
     NSMutableURLRequest *req = [self baseJSONRequestWithURL:reqURL
                                              bodyParameters:bodyParams];
-    
-    [req setHTTPMethod:@"POST"];
+    req.HTTPMethod = @"POST";
     
     [self executeDataTaskWithURL:reqURL
                            request:req
@@ -243,21 +242,23 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                                 bodyParameters:(NSDictionary *)bodyParameters
 {
     
-    NSMutableURLRequest *request =  [[NSMutableURLRequest alloc] init];
-    
-    request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
+                                                                cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                            timeoutInterval:60.];
     
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setTimeoutInterval:60];
-
-    [request setURL:url];
     
-    if (bodyParameters != nil) {
+    if (bodyParameters) {
+        NSError *error;
         NSData *bodyData = [NSJSONSerialization dataWithJSONObject:bodyParameters
                                                            options:0
-                                                             error:nil];
-        [request setHTTPBody:bodyData];
+                                                             error:&error];
+        
+        if (!error) {
+            request.HTTPBody = bodyData;
+        }
+
     }
     
     return request;
