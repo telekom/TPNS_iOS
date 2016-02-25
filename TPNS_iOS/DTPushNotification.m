@@ -75,7 +75,14 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     NSParameterAssert(pushToken.length);
     
     if (self.registrationInProgress) {
-        NSLog(@"WARN: There is already a registration in progress. Ignoring addional request.");
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"There is already a registration in progress. Ignoring addional request."};
+        NSError *customError = [[NSError alloc] initWithDomain:DTPNSErrorDomain
+                                                          code:500
+                                                      userInfo:userInfo];
+        
+        if (completion) {
+            completion(nil, customError);
+        }
         return;
     }
     
