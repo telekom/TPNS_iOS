@@ -160,12 +160,15 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     NSString *applicationType = isSandbox ? DTPNSApplicationTypeiOSSandbox : DTPNSApplicationTypeiOS;
     
-    NSDictionary *bodyParams = @{@"deviceId" : self.deviceId,
+    NSMutableDictionary *bodyParams = [@{@"deviceId" : self.deviceId,
                                  @"deviceRegistrationId" : pushTokenString,
                                  @"applicationKey" : self.appKey,
-                                 @"applicationType" : applicationType,
-                                 @"additionalParameters" : additionalParameters};
+                                 @"applicationType" : applicationType} mutableCopy];
     
+    if (additionalParameters) {
+        bodyParams[@"additionalParameters"] = additionalParameters;
+    }
+
     NSURL *reqURL = [NSURL URLWithString:self.serverURLString];
     reqURL = [reqURL URLByAppendingPathComponent:@"/api/device/register"];
     
