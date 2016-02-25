@@ -70,9 +70,9 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                    completion:(void(^)(NSString *deviceID, NSError * _Nullable error))completion
 {
     
-    NSParameterAssert(serverURLString != nil);
-    NSParameterAssert(appKey != nil);
-    NSParameterAssert(pushToken != nil);
+    NSParameterAssert(serverURLString.length);
+    NSParameterAssert(appKey.length);
+    NSParameterAssert(pushToken.length);
     
     if (self.registrationInProgress) {
         NSLog(@"WARN: There is already a registration in progress. Ignoring addional request.");
