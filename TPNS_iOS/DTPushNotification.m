@@ -48,6 +48,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     return self;
 }
 
+#pragma mark - Class Helper Methods
 + (NSString *)userDefaultsValueForKey:(NSString *)key {
     NSParameterAssert(key.length);
 
@@ -66,6 +67,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     [defaults synchronize];
 }
 
+#pragma mark - Custom Setter and Getters
 - (NSString *)serverURLString {
     if (!_serverURLString) {
         _serverURLString = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsServerURLString];
@@ -115,6 +117,25 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     _deviceId = deviceId;
     [[self class] setUserDefaultsValue:_appKey forKey:DTPNSUserDefaultsDeviceID];
+}
+
+#pragma mark - Block Callback Helper methods
+- (void)callRegisterCompletion:(void(^)(NSString *deviceID, NSError * _Nullable error))completion deviceID:(NSString *)deviceID error:(NSError *)error {
+    
+    if (completion) {
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            completion(deviceID, error);
+        });
+    }
+}
+
+- (void)callUnregisterCompletion:(void(^)(NSError *error))completion error:(NSError *)error {
+
+    if (completion) {
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            completion(error);
+        });
+    }
 }
 
 #pragma mark - Public methods
@@ -184,9 +205,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                             
                             if (!error && 200 == response.statusCode) {
                                 
-                                if (completion) {
-                                    completion(self.deviceId, nil);
-                                }
+                                [self callRegisterCompletion:completion deviceID:self.deviceId error:nil];
 
                             } else {
                                 NSString *originalErrorMessage = responseData[@"message"];
@@ -215,10 +234,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                                                            code:response.statusCode
                                                                        userInfo:userInfo];
                                 
-                                if (completion) {
-                                    completion(nil, customError);
-                                }
-
+                                [self callRegisterCompletion:completion deviceID:nil error:customError];
                             }
                             
                             self.registrationInProgress = NO;
@@ -234,10 +250,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                                    code:500
                                                userInfo:@{NSLocalizedDescriptionKey:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."}];
 
-        if (completion) {
-            completion(customError);
-        }
-
+        [self callUnregisterCompletion:completion error:customError];
         return;
     }
     
@@ -267,11 +280,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                               //app sends a wrong appID. This path only handles
                               //underlying connection errors
                           }
-                          
-                          if (completion) {
-                              completion(error);
-                          }
-  
+
+                          [self callUnregisterCompletion:completion error:error];  
     }];
     
     
