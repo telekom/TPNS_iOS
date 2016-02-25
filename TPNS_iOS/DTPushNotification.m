@@ -160,9 +160,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     self.registrationInProgress = YES;
     
-    if (self.deviceId != nil || self.appKey != nil || self.serverURLString != nil) {
-    }
-    
     NSCharacterSet *trimSet = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
     NSString *pushTokenString = [[[pushToken description] stringByTrimmingCharactersInSet:trimSet] stringByReplacingOccurrencesOfString:@" " withString:@""];
     
