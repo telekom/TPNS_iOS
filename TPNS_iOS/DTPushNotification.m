@@ -91,7 +91,7 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     if (self.deviceId != nil || self.appKey != nil || self.serverURLString != nil) {
     }
     
-    NSCharacterSet * trimSet = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
+    NSCharacterSet *trimSet = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
     NSString *pushTokenString = [[[pushToken description] stringByTrimmingCharactersInSet:trimSet] stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     self.serverURLString = serverURLString;
