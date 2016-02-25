@@ -213,7 +213,7 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                  queryParameters:nil
                       completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                          
-                          if (error == nil && response.statusCode == 200) {
+                          if (!error && 200 == response.statusCode) {
                               self.serverURLString = nil;
                               self.deviceId = nil;
                               self.registrationInProgress = NO;
@@ -223,13 +223,15 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
                               [defaults removeObjectForKey:DTPNSUserDefaultsAppKey];
                               [defaults removeObjectForKey:DTPNSUserDefaultsServerURLString];
                               [defaults synchronize];
-                              
-                              completion(nil);
+
                           } else {
                               //According to TPNS Backend Dev Team Server ALWAYS send a 200,
                               //even, if the device has never been registered, or the
                               //app sends a wrong appID. This path only handles
                               //underlying connection errors
+                          }
+                          
+                          if (completion) {
                               completion(error);
                           }
   
