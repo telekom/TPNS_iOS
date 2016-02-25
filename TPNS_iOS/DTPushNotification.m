@@ -62,12 +62,12 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
     return instance;
 }
 
-- (void)registerWithServerURL:(NSString *) serverURLString
-                       appKey:(NSString *) appKey
-                    pushToken:(NSData *) pushToken
-         additionalParameters:(nullable NSArray *) additionalParameters
+- (void)registerWithServerURL:(NSString *)serverURLString
+                       appKey:(NSString *)appKey
+                    pushToken:(NSData *)pushToken
+         additionalParameters:(nullable NSArray *)additionalParameters
                     isSandbox:(BOOL)isSandbox
-                   completion:(void(^)(NSString *deviceID, NSError* error)) completion
+                   completion:(void(^)(NSString *deviceID, NSError *error))completion
 {
     
     NSParameterAssert(serverURLString != nil);

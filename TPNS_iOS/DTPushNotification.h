@@ -16,12 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (DTPushNotification *)sharedInstance;
 
 //TODO: Documentation
-- (void)registerWithServerURL:(NSString *) serverURLString
-                       appKey:(NSString *) appKey
-                    pushToken:(NSData *) pushToken
-         additionalParameters:(nullable NSArray *) additionalParameters
+- (void)registerWithServerURL:(NSString *)serverURLString
+                       appKey:(NSString *)appKey
+                    pushToken:(NSData *)pushToken
+         additionalParameters:(nullable NSArray *)additionalParameters
                     isSandbox:(BOOL)isSandbox
-                   completion:(void(^)(NSString * _Nullable deviceID, NSError * _Nullable error)) completion;
+                   completion:(void(^)(NSString *deviceID, NSError *error))completion;
 
 //TODO: Documentation
 - (void)unregisterWithCompletion:(void(^)(NSError * _Nullable error)) completion;
