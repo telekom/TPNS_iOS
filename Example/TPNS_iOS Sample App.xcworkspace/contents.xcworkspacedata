@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:TPNS_iOS.xcodeproj">
+      location = "group:TPNS_iOS Sample App.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Example/TPNS_iOS Sample App.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

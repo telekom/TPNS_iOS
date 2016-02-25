@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A8FB5B88E068C5B6814DFF9C24273E4 /* TPNS_iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7C22B27B0D31D949B23D53559A5CB8 /* TPNS_iOS-dummy.m */; };
+		7397794987C63DC0F1881B42399F2271 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		934D731EBB889528281ACECCE28603C4 /* Pods-TPNS_iOS Sample App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC63867889506F7B5C084A52ABE06AC6 /* Pods-TPNS_iOS Sample App-dummy.m */; };
+		A07C3F883620C2563F63F41A475659A6 /* DTPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = F21A564BAAD2D79CAFCE50F7B7A9DC8C /* DTPushNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D896BE24F1AC03B50B894E614B0D2D96 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		EC5C10C794DF9424C2F68FB70FDFA71D /* DTPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB005B442D2FEC6784F71CA9372CB73 /* DTPushNotification.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C385C265A4BB74F14C03AC52B24044C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B46461B1A33208A6298F28214D77285;
+			remoteInfo = TPNS_iOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C1F5FFD5FE33380A10ADC4639A4B154 /* Pods-TPNS_iOS Sample App-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TPNS_iOS Sample App-frameworks.sh"; sourceTree = "<group>"; };
+		1D0E2B2B4AFADE3814786EC8C187BAC4 /* Pods-TPNS_iOS Sample App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TPNS_iOS Sample App.release.xcconfig"; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4C7C22B27B0D31D949B23D53559A5CB8 /* TPNS_iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TPNS_iOS-dummy.m"; sourceTree = "<group>"; };
+		4E1AE5C9E4056E56E4BED8BC5D66D251 /* TPNS_iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TPNS_iOS.xcconfig; sourceTree = "<group>"; };
+		548A744DE5436C2FE488600B7D921666 /* libTPNS_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTPNS_iOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7040E8E96E1786E94B60271165500BE4 /* Pods-TPNS_iOS Sample App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TPNS_iOS Sample App.debug.xcconfig"; sourceTree = "<group>"; };
+		75E3FE73DD42FBDAC8583E7D16DE62FD /* TPNS_iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TPNS_iOS-prefix.pch"; sourceTree = "<group>"; };
+		99ABA4557E75DD95354977C5697B273E /* Pods-TPNS_iOS Sample App-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TPNS_iOS Sample App-resources.sh"; sourceTree = "<group>"; };
+		9E139971E3D77B3C9E246492CAF8F332 /* Pods-TPNS_iOS Sample App-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TPNS_iOS Sample App-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BC63867889506F7B5C084A52ABE06AC6 /* Pods-TPNS_iOS Sample App-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TPNS_iOS Sample App-dummy.m"; sourceTree = "<group>"; };
+		D7091477CE846F5FCA970388A59AD581 /* libPods-TPNS_iOS Sample App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TPNS_iOS Sample App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF3EE513B87C5169AB437F73C14A103 /* Pods-TPNS_iOS Sample App-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TPNS_iOS Sample App-acknowledgements.plist"; sourceTree = "<group>"; };
+		F21A564BAAD2D79CAFCE50F7B7A9DC8C /* DTPushNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DTPushNotification.h; sourceTree = "<group>"; };
+		FAB005B442D2FEC6784F71CA9372CB73 /* DTPushNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DTPushNotification.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BB41886C5BA6BECECBFFCF36EF7055D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7397794987C63DC0F1881B42399F2271 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFCB1AA42E4FBFB9A7A9E1BE4F10E998 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D896BE24F1AC03B50B894E614B0D2D96 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F844DF8DBB61690B39880D267ECA00B /* Pods-TPNS_iOS Sample App */ = {
+			isa = PBXGroup;
+			children = (
+				9E139971E3D77B3C9E246492CAF8F332 /* Pods-TPNS_iOS Sample App-acknowledgements.markdown */,
+				ECF3EE513B87C5169AB437F73C14A103 /* Pods-TPNS_iOS Sample App-acknowledgements.plist */,
+				BC63867889506F7B5C084A52ABE06AC6 /* Pods-TPNS_iOS Sample App-dummy.m */,
+				0C1F5FFD5FE33380A10ADC4639A4B154 /* Pods-TPNS_iOS Sample App-frameworks.sh */,
+				99ABA4557E75DD95354977C5697B273E /* Pods-TPNS_iOS Sample App-resources.sh */,
+				7040E8E96E1786E94B60271165500BE4 /* Pods-TPNS_iOS Sample App.debug.xcconfig */,
+				1D0E2B2B4AFADE3814786EC8C187BAC4 /* Pods-TPNS_iOS Sample App.release.xcconfig */,
+			);
+			name = "Pods-TPNS_iOS Sample App";
+			path = "Target Support Files/Pods-TPNS_iOS Sample App";
+			sourceTree = "<group>";
+		};
+		3B47B27A3D0A63BF4F3A1E5A3A12278C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7091477CE846F5FCA970388A59AD581 /* libPods-TPNS_iOS Sample App.a */,
+				548A744DE5436C2FE488600B7D921666 /* libTPNS_iOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6C3BB24D4618FCC60734D1D453EE5C03 /* TPNS_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F55B0CEB3CDD73047469952D51C60A57 /* Support Files */,
+				8C951078276C5B568B9DD7EFC11A5C4F /* TPNS_iOS */,
+			);
+			name = TPNS_iOS;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				A5DD193B0491702E1C1429B8FD44C8F5 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				3B47B27A3D0A63BF4F3A1E5A3A12278C /* Products */,
+				EC0BAB7EA0FB1F71CA84F43A74ADD98C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8C951078276C5B568B9DD7EFC11A5C4F /* TPNS_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				F21A564BAAD2D79CAFCE50F7B7A9DC8C /* DTPushNotification.h */,
+				FAB005B442D2FEC6784F71CA9372CB73 /* DTPushNotification.m */,
+			);
+			path = TPNS_iOS;
+			sourceTree = "<group>";
+		};
+		A5DD193B0491702E1C1429B8FD44C8F5 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6C3BB24D4618FCC60734D1D453EE5C03 /* TPNS_iOS */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EC0BAB7EA0FB1F71CA84F43A74ADD98C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2F844DF8DBB61690B39880D267ECA00B /* Pods-TPNS_iOS Sample App */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		F55B0CEB3CDD73047469952D51C60A57 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4E1AE5C9E4056E56E4BED8BC5D66D251 /* TPNS_iOS.xcconfig */,
+				4C7C22B27B0D31D949B23D53559A5CB8 /* TPNS_iOS-dummy.m */,
+				75E3FE73DD42FBDAC8583E7D16DE62FD /* TPNS_iOS-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/TPNS_iOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BE65845ACF35813FA04EC5C551D0CBE4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A07C3F883620C2563F63F41A475659A6 /* DTPushNotification.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0B46461B1A33208A6298F28214D77285 /* TPNS_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C677F14B2416B94C2D7F10521CF63C1 /* Build configuration list for PBXNativeTarget "TPNS_iOS" */;
+			buildPhases = (
+				F4A43EF94FF3B23916F161BA5D89E5DE /* Sources */,
+				BB41886C5BA6BECECBFFCF36EF7055D9 /* Frameworks */,
+				BE65845ACF35813FA04EC5C551D0CBE4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TPNS_iOS;
+			productName = TPNS_iOS;
+			productReference = 548A744DE5436C2FE488600B7D921666 /* libTPNS_iOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		18F615F26685EB7844ABE8D30BAD64CE /* Pods-TPNS_iOS Sample App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 074D9BCAB0077ABCC7234FBD3E1A2AD4 /* Build configuration list for PBXNativeTarget "Pods-TPNS_iOS Sample App" */;
+			buildPhases = (
+				AFF35D53BB2885951D43079CBB9F50E4 /* Sources */,
+				DFCB1AA42E4FBFB9A7A9E1BE4F10E998 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F38398A38C6E89464BF910015DA565B1 /* PBXTargetDependency */,
+			);
+			name = "Pods-TPNS_iOS Sample App";
+			productName = "Pods-TPNS_iOS Sample App";
+			productReference = D7091477CE846F5FCA970388A59AD581 /* libPods-TPNS_iOS Sample App.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 3B47B27A3D0A63BF4F3A1E5A3A12278C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				18F615F26685EB7844ABE8D30BAD64CE /* Pods-TPNS_iOS Sample App */,
+				0B46461B1A33208A6298F28214D77285 /* TPNS_iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFF35D53BB2885951D43079CBB9F50E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				934D731EBB889528281ACECCE28603C4 /* Pods-TPNS_iOS Sample App-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4A43EF94FF3B23916F161BA5D89E5DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC5C10C794DF9424C2F68FB70FDFA71D /* DTPushNotification.m in Sources */,
+				4A8FB5B88E068C5B6814DFF9C24273E4 /* TPNS_iOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F38398A38C6E89464BF910015DA565B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TPNS_iOS;
+			target = 0B46461B1A33208A6298F28214D77285 /* TPNS_iOS */;
+			targetProxy = 8C385C265A4BB74F14C03AC52B24044C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3D8326F16BAAC531504B18F5A1731A65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E1AE5C9E4056E56E4BED8BC5D66D251 /* TPNS_iOS.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TPNS_iOS/TPNS_iOS-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		4AFF34072617E11D82BF379A45614919 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D0E2B2B4AFADE3814786EC8C187BAC4 /* Pods-TPNS_iOS Sample App.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5CE5176205D06FF3FFE3DDDA9291E44B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		74857149DC1E0D599B8A01A78349A926 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1D48FC34E58CAF516437090FCCD0888 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E1AE5C9E4056E56E4BED8BC5D66D251 /* TPNS_iOS.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TPNS_iOS/TPNS_iOS-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C5E8B1155F852593E9CE8D991E45CEF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7040E8E96E1786E94B60271165500BE4 /* Pods-TPNS_iOS Sample App.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		074D9BCAB0077ABCC7234FBD3E1A2AD4 /* Build configuration list for PBXNativeTarget "Pods-TPNS_iOS Sample App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5E8B1155F852593E9CE8D991E45CEF5 /* Debug */,
+				4AFF34072617E11D82BF379A45614919 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CE5176205D06FF3FFE3DDDA9291E44B /* Debug */,
+				74857149DC1E0D599B8A01A78349A926 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C677F14B2416B94C2D7F10521CF63C1 /* Build configuration list for PBXNativeTarget "TPNS_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1D48FC34E58CAF516437090FCCD0888 /* Debug */,
+				3D8326F16BAAC531504B18F5A1731A65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

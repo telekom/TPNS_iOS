@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "DTPushNotification.h"
+#import <TPNS_iOS/DTPushNotification.h>
 
 @interface AppDelegate ()
 

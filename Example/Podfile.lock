@@ -1,0 +1,14 @@
+PODS:
+  - TPNS_iOS (0.7.0)
+
+DEPENDENCIES:
+  - TPNS_iOS (from `../TPNS_iOS.podspec`)
+
+EXTERNAL SOURCES:
+  TPNS_iOS:
+    :path: ../TPNS_iOS.podspec
+
+SPEC CHECKSUMS:
+  TPNS_iOS: 33f38e8132d6ec178d28276a13e58e4d3fa96db4
+
+COCOAPODS: 0.39.0

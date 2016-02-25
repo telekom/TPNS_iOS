@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "DTPushNotification.h"
+#import <TPNS_iOS/DTPushNotification.h>
 
 @interface ViewController ()
 

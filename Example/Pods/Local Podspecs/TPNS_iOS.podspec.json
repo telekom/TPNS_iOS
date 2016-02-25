@@ -1,0 +1,17 @@
+{
+  "name": "TPNS_iOS",
+  "version": "0.7.0",
+  "license": "NONE",
+  "authors": {
+    "Bjoern Richter": "b.richter@proventa.de"
+  },
+  "homepage": "http://telekom.de",
+  "summary": "Write me",
+  "source": {
+    "git": "https://group-innovation-hub.wesp.telekom.net/gitlab/TPNS/TPNS_iOS.git",
+    "tag": "0.7.0"
+  },
+  "requires_arc": true,
+  "public_header_files": "TPNS_iOS/DTPushNotification.h",
+  "source_files": "TPNS_iOS/DTPushNotification.*"
+}
