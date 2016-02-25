@@ -30,10 +30,9 @@
     return YES;
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    NSDictionary *params = @{@"key":@"SomeAdditionalID", @"value":@(4711)};
+    NSDictionary *params = @{@"key":@"SomeAdditionalID", @"value":@4711};
     
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
     [tpns registerWithServerURL:@"https://tpns-preprod.molutions.de/TPNS"
