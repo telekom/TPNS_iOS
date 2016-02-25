@@ -9,14 +9,14 @@
 #import "DTPushNotification.h"
 
 //String constants
-static NSString *DTPNSApplicationTypeiOS = @"IOS";
+static NSString *DTPNSApplicationTypeiOS        = @"IOS";
 static NSString *DTPNSApplicationTypeiOSSandbox = @"IOS_SAND";
-static NSString *DTPNSErrorDomain = @"de.telekom.TPNS";
+static NSString *DTPNSErrorDomain               = @"de.telekom.TPNS";
 
 //Defaults
-static NSString *DTPNSUserDefaultsServerURLString    = @"DTPNSUserDefaultsServerURLString";
-static NSString *DTPNSUserDefaultsAppKey             = @"DTPNSUserDefaultsAppKey";
-static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDeviceID";
+static NSString *DTPNSUserDefaultsServerURLString = @"DTPNSUserDefaultsServerURLString";
+static NSString *DTPNSUserDefaultsAppKey          = @"DTPNSUserDefaultsAppKey";
+static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID";
 
 
 @interface DTPushNotification (/*privat*/)
