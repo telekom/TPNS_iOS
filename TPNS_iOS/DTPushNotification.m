@@ -21,12 +21,11 @@ static NSString *DTPNSUserDefaultsDeviceID           = @"DTPNSUserDefaultsDevice
 
 @interface DTPushNotification (/*privat*/)
 
-@property (strong) NSURLSession *session;
-@property (strong) NSString *serverURLString;
-@property (strong) NSString *appKey;
-@property (strong) NSString *deviceId;
-@property (assign) BOOL registrationInProgress;
-
+@property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSString *serverURLString;
+@property (nonatomic, strong) NSString *appKey;
+@property (nonatomic, strong) NSString *deviceId;
+@property (nonatomic, assign) BOOL registrationInProgress;
 
 @end
 
