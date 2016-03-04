@@ -1,4 +1,4 @@
-TPNS_iOS is a library to simplfy the device registration and unregistration with Telekom Push Notification Service (TPNS).
+TPNS_iOS is a library to simplify the device registration and unregistration with Telekom Push Notification Service (TPNS).
 
 ## Installation
 
@@ -60,30 +60,30 @@ To register a device with TPNS start by calling the corresponding `UIApplication
     [application registerForRemoteNotifications];
 ```
 
-After the application gathered all the required information your AppDelegates `didRegisterForRemoteNotificationsWithDeviceToken` method will be called with a genearted device token. Use is to register the device with TPNS:
+After the application gathered all the required information your AppDelegates `didRegisterForRemoteNotificationsWithDeviceToken` method will be called with a generated device token. Use is to register the device with TPNS:
 
 ```objective-c
  NSDictionary *params = @{@"key" : @"SomeAdditionalID", @"value" : @4711};
- 
+
  DTPushNotification *tpns = [DTPushNotification sharedInstance];
-    [tpns registerWithServerURL:@"https://tpns.fqdn"
-                         appKey:@"APPKEY"
-                      pushToken:token
-           additionalParameters:@[params]
-                      isSandbox:YES
-                     completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
-                   		 if (error) {
-                             //handle error
-                         }
-                         //save the device key
-                     }];
+    [tpns registerWithURL:[NSURL URLWithString:@"TPNS Endpoint"]
+                   appKey:@"APPKEY"
+                pushToken:token
+     additionalParameters:@[params]
+                  sandbox:YES
+               completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
+                if (error) {
+                  //handle error
+                }
+                //save the device key
+    }];
 ```
 
 If your app needs the returned device key, you must take care of storing it yourself.
 
 ### Unregistering a Device
 
-To unrigster the device, simple call:
+To unregister the device, simple call:
 
 ```objective-c
 [[DTPushNotification sharedInstance] unregisterWithCompletion:^(NSError * _Nullable error) {
