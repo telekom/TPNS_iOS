@@ -74,12 +74,13 @@ After the application gathered all the required information your AppDelegates `d
                completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
                 if (error) {
                   //handle error
+                  return;
                 }
-                //save the device key
+                //save the deviceID
     }];
 ```
 
-If your app needs the returned device key, you must take care of storing it yourself.
+If your app needs the returned ``deviceID``, you must take care of storing it yourself.
 
 ### Unregistering a Device
 

@@ -19,14 +19,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Registers the device with TPNS
- 
+
  @param url The URL string of the TPNS server
  @param appKey The app key used to connect to TPNS
  @param pushToken The pushToken genarted by UIApplication, when registering for remote notifications
  @param additionalParameters An array containing any additional parameters as NSDictionaries like @{@"key" : @"SomeAdditionalID", @"value" : @4711};
  @param sandbox Defines wether or not to use the TPNS sandbox feature
- @param completion A block object to be executed when registration is completed. This block has no return value and takes two arguments: The deviceID returned by TPNS, if registration was successful and nil otherwise as well an an NSError object which is returned, if registration failed and nil otherwise.
- 
+ @param completion A block object to be executed when registration is completed. This block has no return value and takes two arguments: The deviceID returned by TPNS, if registration was successful and nil otherwise as well as an NSError object which is returned, if registration failed and nil otherwise.
+
  */
 - (void)registerWithURL:(NSURL *)url
                  appKey:(NSString *)appKey
@@ -37,9 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Unregisters the device with TPNS
- 
- @param A block object to be executed when deregistration is completed. This block has no return value and takes one arguments: An an NSError object which is returned, if deregistration failed and nil otherwise.
- 
+
+ @param A block object to be executed when unregistration is completed. This block has no return value and takes one arguments: An an NSError object which is returned, if unregistration failed and nil otherwise.
+
  */
 - (void)unregisterWithCompletion:(void(^)(NSError * _Nullable error)) completion;
 
