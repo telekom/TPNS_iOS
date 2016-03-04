@@ -22,7 +22,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 @interface DTPushNotification (/*privat*/)
 
 @property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, strong) NSString *serverURLString;
+@property (nonatomic, strong) NSURL *serverURL;
 @property (nonatomic, strong) NSString *appKey;
 @property (nonatomic, strong) NSString *deviceId;
 @property (nonatomic, assign) BOOL registrationInProgress;
@@ -31,7 +31,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 
 @implementation DTPushNotification
-@synthesize serverURLString = _serverURLString;
+@synthesize serverURL = _serverURL;
 @synthesize appKey = _appKey;
 @synthesize deviceId = _deviceId;
 
@@ -68,21 +68,21 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 #pragma mark - Custom Setter and Getters
-- (NSString *)serverURLString {
-    if (!_serverURLString) {
-        _serverURLString = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsServerURLString];
+- (NSURL *)serverURL {
+    if (!_serverURL) {
+        _serverURL = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsServerURLString];
     }
     
-    return _serverURLString;
+    return _serverURL;
 }
 
-- (void)setServerURLString:(NSString *)serverURLString {
-    if (_serverURLString == serverURLString) {
+- (void)setServerURLString:(NSURL *)serverURL {
+    if (_serverURL == serverURL) {
         return;
     }
     
-    _serverURLString = serverURLString;
-    [[self class] setUserDefaultsValue:_serverURLString forKey:DTPNSUserDefaultsServerURLString];
+    _serverURL = serverURL;
+    [[self class] setUserDefaultsValue:_serverURL forKey:DTPNSUserDefaultsServerURLString];
 }
 
 - (NSString *)appKey {
@@ -148,15 +148,16 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     return instance;
 }
 
-- (void)registerWithServerURL:(NSString *)serverURLString
-                       appKey:(NSString *)appKey
-                    pushToken:(NSData *)pushToken
-         additionalParameters:(nullable NSArray *)additionalParameters
-                    isSandbox:(BOOL)isSandbox
-                   completion:(void(^)(NSString *deviceID, NSError * _Nullable error))completion
+- (void)registerWithURL:(NSURL *)url
+                 appKey:(NSString *)appKey
+              pushToken:(NSData *)pushToken
+   additionalParameters:(nullable NSArray *)additionalParameters
+                sandbox:(BOOL)sandbox
+             completion:(void(^)(NSString *deviceID, NSError * _Nullable error))completion;
+
 {
-    
-    NSParameterAssert(serverURLString.length);
+    NSParameterAssert(url.absoluteString.length);
+    NSParameterAssert(!url.isFileURL);
     NSParameterAssert(appKey.length);
     NSParameterAssert(pushToken.length);
     
@@ -175,11 +176,11 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     NSCharacterSet *trimSet = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
     NSString *pushTokenString = [[[pushToken description] stringByTrimmingCharactersInSet:trimSet] stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    self.serverURLString = serverURLString;
+    self.serverURL = url;
     self.appKey = appKey;
     self.deviceId = [NSUUID UUID].UUIDString;
     
-    NSString *applicationType = isSandbox ? DTPNSApplicationTypeiOSSandbox : DTPNSApplicationTypeiOS;
+    NSString *applicationType = sandbox ? DTPNSApplicationTypeiOSSandbox : DTPNSApplicationTypeiOS;
     
     NSMutableDictionary *bodyParams = [@{@"deviceId" : self.deviceId,
                                  @"deviceRegistrationId" : pushTokenString,
@@ -190,9 +191,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
         bodyParams[@"additionalParameters"] = additionalParameters;
     }
 
-    NSURL *reqURL = [NSURL URLWithString:self.serverURLString];
-    reqURL = [reqURL URLByAppendingPathComponent:@"/api/device/register"];
-    
+    NSURL *reqURL = [self.serverURL URLByAppendingPathComponent:@"/api/device/register"];
     NSMutableURLRequest *req = [self baseJSONRequestWithURL:reqURL
                                              bodyParameters:bodyParams];
     req.HTTPMethod = @"POST";
@@ -245,7 +244,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 - (void)unregisterWithCompletion:(void(^)(NSError *error))completion {
     
-    if (!self.serverURLString.length || !self.appKey.length || !self.deviceId.length) {
+    if (!self.serverURL.absoluteString.length || !self.appKey.length || !self.deviceId.length) {
         NSError *customError = [NSError errorWithDomain:DTPNSErrorDomain
                                                    code:500
                                                userInfo:@{NSLocalizedDescriptionKey:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."}];
@@ -254,9 +253,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
         return;
     }
     
-    NSURL *reqURL = [NSURL URLWithString:self.serverURLString];
     NSString *pathFormat = [NSString stringWithFormat:@"/api/application/%@/device/%@/unregister",self.appKey, self.deviceId];
-    reqURL = [reqURL URLByAppendingPathComponent:pathFormat];
+    NSURL *reqURL = [self.serverURL URLByAppendingPathComponent:pathFormat];
     
     NSMutableURLRequest *req = [self baseJSONRequestWithURL:reqURL
                                              bodyParameters:nil];
