@@ -41,11 +41,11 @@
     NSDictionary *params = @{@"key" : @"SomeAdditionalID", @"value" : @4711};
     
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
-    [tpns registerWithServerURL:@"https://tpns-preprod.molutions.de/TPNS"
+    [tpns registerWithURL:[NSURL URLWithString:@"https://tpns-preprod.molutions.de/TPNS"]
                          appKey:@"LoadTestApp3"
                       pushToken:token
            additionalParameters:@[params]
-                      isSandbox:YES
+                      sandbox:YES
                      completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
                                                   
                          NSString *title = @"Success";
