@@ -82,6 +82,10 @@ After the application gathered all the required information your AppDelegates `d
 
 If your app needs the returned ``deviceID``, you must take care of storing it yourself.
 
+### Available Endpoints
+* Production: https://tpns.molutions.de/TPNS/
+* Pre-Production: https://tpns-preprod.molutions.de/TPNS/
+
 ### Unregistering a Device
 
 To unregister the device, simple call:
