@@ -41,7 +41,7 @@
     NSDictionary *params = @{@"key" : @"SomeAdditionalID", @"value" : @4711};
     
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
-    [tpns registerWithURL:[NSURL URLWithString:@"https://tpns-preprod.molutions.de/TPNS"]
+    [tpns registerWithURL:[NSURL URLWithString:DTPNSURLStringPreProduction]
                          appKey:@"LoadTestApp3"
                       pushToken:token
            additionalParameters:@[params]

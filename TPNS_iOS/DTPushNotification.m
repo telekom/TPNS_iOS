@@ -8,6 +8,9 @@
 
 #import "DTPushNotification.h"
 
+NSString *const DTPNSURLStringProduction = @"https://tpns.molutions.de/TPNS";
+NSString *const DTPNSURLStringPreProduction = @"https://tpns-preprod.molutions.de/TPNS";
+
 //String constants
 static NSString *DTPNSApplicationTypeiOS        = @"IOS";
 static NSString *DTPNSApplicationTypeiOSSandbox = @"IOS_SAND";
