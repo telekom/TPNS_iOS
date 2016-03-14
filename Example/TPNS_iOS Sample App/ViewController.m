@@ -50,7 +50,7 @@
                completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
                    
                    NSString *title = @"Success";
-                   NSString *message = [NSString stringWithFormat:@"The device was successfully registered with TPNS. TPNS deviceID is is \"%@\"", deviceID];
+                   NSString *message = [NSString stringWithFormat:@"The device was successfully registered with TPNS. TPNS deviceID is \"%@\"", deviceID];
                    
                    if (error) {
                        title = @"Error";
