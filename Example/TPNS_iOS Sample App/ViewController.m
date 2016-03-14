@@ -17,13 +17,13 @@
 @implementation ViewController
 
 - (IBAction)registerForRemoteNotifications:(id)sender {
-
+    
     // Register the supported interaction types.
     UIApplication *application = [UIApplication sharedApplication];
     
     AppDelegate *appDelegate = (AppDelegate *)application.delegate;
     appDelegate.registeredForRemoteNotificationsCallback = ^(AppDelegate *appdelegate, NSData *token){
-    
+        
         if (token) {
             [self startRegisterCallWithDeviceToken:token];
         }
@@ -37,41 +37,42 @@
 }
 
 - (void)startRegisterCallWithDeviceToken:(NSData *)token {
-
-    NSDictionary *params = @{@"key" : @"SomeAdditionalID", @"value" : @4711};
+    
+    NSArray *params = @[@{@"key" : @"SomeAdditionalID", @"value" : @4711},
+                        @{@"key" : @"OtherID", @"value" : @"randomValue"}];
     
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
     [tpns registerWithURL:[NSURL URLWithString:DTPNSURLStringPreProduction]
-                         appKey:@"LoadTestApp3"
-                      pushToken:token
-           additionalParameters:@[params]
-                      sandbox:YES
-                     completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
-                                                  
-                         NSString *title = @"Success";
-                         NSString *message = [NSString stringWithFormat:@"The device was successfully registered with TPNS. TPNS deviceID is is \"%@\"", deviceID];
-                         
-                         if (error) {
-                             title = @"Error";
-                             message = [NSString stringWithFormat:@"The device could not be registered with TPNS. Errormessage was \"%@\"", error.localizedDescription];
-                         }
-                         
-                         UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
-                                                                                        message:message
-                                                                                 preferredStyle:UIAlertControllerStyleAlert];
-                         
-                         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                            style:UIAlertActionStyleDefault
-                                                                          handler:nil];
-                         
-                         [alert addAction:okAction];
-                         
-                         [self presentViewController:alert animated:YES completion:nil];
-                     }];
+                   appKey:@"LoadTestApp3"
+                pushToken:token
+     additionalParameters:params
+                  sandbox:YES
+               completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
+                   
+                   NSString *title = @"Success";
+                   NSString *message = [NSString stringWithFormat:@"The device was successfully registered with TPNS. TPNS deviceID is is \"%@\"", deviceID];
+                   
+                   if (error) {
+                       title = @"Error";
+                       message = [NSString stringWithFormat:@"The device could not be registered with TPNS. Errormessage was \"%@\"", error.localizedDescription];
+                   }
+                   
+                   UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                                  message:message
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+                   
+                   UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                      style:UIAlertActionStyleDefault
+                                                                    handler:nil];
+                   
+                   [alert addAction:okAction];
+                   
+                   [self presentViewController:alert animated:YES completion:nil];
+               }];
 }
 
-- (IBAction)unregisterAction:(id)sender
-{
+- (IBAction)unregisterAction:(id)sender {
+    
     [[DTPushNotification sharedInstance] unregisterWithCompletion:^(NSError * _Nullable error) {
         
         NSString *title = @"Success";
@@ -92,7 +93,7 @@
         
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:nil];
-     }];
+    }];
 }
 
 @end
