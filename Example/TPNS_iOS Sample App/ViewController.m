@@ -22,10 +22,10 @@
     UIApplication *application = [UIApplication sharedApplication];
     
     AppDelegate *appDelegate = (AppDelegate *)application.delegate;
-    appDelegate.registeredForRemoteNotificationsCallback = ^(AppDelegate *appdelegate, NSData *token){
+    appDelegate.registeredForRemoteNotificationsCallback = ^(AppDelegate *appdelegate, NSData *deviceToken){
         
-        if (token) {
-            [self startRegisterCallWithDeviceToken:token];
+        if (deviceToken.length) {
+            [self startRegisterCallWithDeviceToken:deviceToken];
         }
     };
     
@@ -36,7 +36,7 @@
     [application registerForRemoteNotifications];
 }
 
-- (void)startRegisterCallWithDeviceToken:(NSData *)token {
+- (void)startRegisterCallWithDeviceToken:(NSData *)deviceToken {
     
     NSArray *params = @[@{@"key" : @"SomeAdditionalID", @"value" : @4711},
                         @{@"key" : @"OtherID", @"value" : @"randomValue"}];
@@ -44,7 +44,7 @@
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
     [tpns registerWithURL:[NSURL URLWithString:DTPNSURLStringPreProduction]
                    appKey:@"LoadTestApp3"
-                pushToken:token
+                pushToken:deviceToken
      additionalParameters:params
                   sandbox:YES
                completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {

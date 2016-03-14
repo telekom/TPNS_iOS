@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class AppDelegate;
-typedef void(^AppDelegateRegisteredRemoteNotifications)(AppDelegate *appdelegate, NSData *token);
+typedef void(^AppDelegateRegisteredRemoteNotifications)(AppDelegate *appdelegate, NSData *deviceToken);
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
