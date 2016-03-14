@@ -67,7 +67,7 @@ NSArray *params = @[@{@"key" : @"SomeAdditionalID", @"value" : @4711},
                     @{@"key" : @"OtherID", @"value" : @"randomValue"}];
 
  DTPushNotification *tpns = [DTPushNotification sharedInstance];
-    [tpns registerWithURL:[NSURL URLWithString:@"TPNS Endpoint"]
+    [tpns registerWithURL:[NSURL URLWithString:@"TPNS Endpoint"] //The different endpoints are defined in the DTPushNotification.h file
                    appKey:@"APPKEY"
                 pushToken:token
      additionalParameters:params
