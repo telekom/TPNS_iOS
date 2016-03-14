@@ -8,7 +8,7 @@
 
 #import "DTPushNotification.h"
 
-NSString *const DTPNSURLStringProduction = @"https://tpns.molutions.de/TPNS";
+NSString *const DTPNSURLStringProduction    = @"https://tpns.molutions.de/TPNS";
 NSString *const DTPNSURLStringPreProduction = @"https://tpns-preprod.molutions.de/TPNS";
 
 //String constants
@@ -35,8 +35,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 @implementation DTPushNotification
 @synthesize serverURL = _serverURL;
-@synthesize appKey = _appKey;
-@synthesize deviceId = _deviceId;
+@synthesize appKey    = _appKey;
+@synthesize deviceId  = _deviceId;
 
 - (id)init {
     
@@ -290,7 +290,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 #pragma mark - Base Request
 - (NSMutableURLRequest *)baseJSONRequestWithURL:(NSURL *)url
-                                bodyParameters:(NSDictionary *)bodyParameters
+                                 bodyParameters:(NSDictionary *)bodyParameters
 {
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
@@ -316,10 +316,10 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 #pragma mark - Data Task
 - (void)executeDataTaskWithURL:(NSURL *)url
-                         request:(NSMutableURLRequest *)request
-                       inSession:(NSURLSession *)session
-                 queryParameters:(NSDictionary *)queryParameters
-                completion:(void(^)(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error))completion
+                       request:(NSMutableURLRequest *)request
+                     inSession:(NSURLSession *)session
+               queryParameters:(NSDictionary *)queryParameters
+                    completion:(void(^)(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error))completion
 {
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -332,8 +332,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                                 if (completion) {
                                                     completion(responseDict, (NSHTTPURLResponse *)response, error);
                                                 }
-
-    }];
+                                                
+                                    }];
     
     [task resume];
 }
