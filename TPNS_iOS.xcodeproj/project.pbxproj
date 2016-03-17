@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DDB956D11C71CF9200B352D0 /* TPNS_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D01C71CF9200B352D0 /* TPNS_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDB956D91C71F12200B352D0 /* DTPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D81C71F12200B352D0 /* DTPushNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDB956DB1C71F12700B352D0 /* DTPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956DA1C71F12700B352D0 /* DTPushNotification.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DDB956CD1C71CF9200B352D0 /* TPNS_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPNS_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDB956D01C71CF9200B352D0 /* TPNS_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPNS_iOS.h; sourceTree = "<group>"; };
 		DDB956D21C71CF9200B352D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDB956D81C71F12200B352D0 /* DTPushNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPushNotification.h; sourceTree = "<group>"; };
 		DDB956DA1C71F12700B352D0 /* DTPushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPushNotification.m; sourceTree = "<group>"; };
@@ -50,7 +48,6 @@
 		DDB956CF1C71CF9200B352D0 /* TPNS_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				DDB956D01C71CF9200B352D0 /* TPNS_iOS.h */,
 				DDB956D81C71F12200B352D0 /* DTPushNotification.h */,
 				DDB956DA1C71F12700B352D0 /* DTPushNotification.m */,
 				DDB956D21C71CF9200B352D0 /* Info.plist */,
@@ -65,7 +62,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDB956D11C71CF9200B352D0 /* TPNS_iOS.h in Headers */,
 				DDB956D91C71F12200B352D0 /* DTPushNotification.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
