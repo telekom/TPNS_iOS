@@ -73,7 +73,12 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 #pragma mark - Custom Setter and Getters
 - (NSURL *)serverURL {
     if (!_serverURL) {
-        _serverURL = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsServerURLString];
+        
+        NSString *serverURLString = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsServerURLString];
+        if (serverURLString.length) {
+            _serverURL = [NSURL URLWithString:serverURLString];
+        }
+        
     }
     
     return _serverURL;
@@ -85,7 +90,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     }
     
     _serverURL = serverURL;
-    [[self class] setUserDefaultsValue:_serverURL forKey:DTPNSUserDefaultsServerURLString];
+    [[self class] setUserDefaultsValue:_serverURL.absoluteString forKey:DTPNSUserDefaultsServerURLString];
 }
 
 - (NSString *)appKey {

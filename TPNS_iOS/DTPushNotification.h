@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString *const DTPNSURLStringProduction;
-FOUNDATION_EXPORT NSString *const DTPNSURLStringPreProduction;
+FOUNDATION_EXPORT NSString * __nonnull const DTPNSURLStringProduction;
+FOUNDATION_EXPORT NSString * __nonnull const DTPNSURLStringPreProduction;
 
 NS_ASSUME_NONNULL_BEGIN
 
