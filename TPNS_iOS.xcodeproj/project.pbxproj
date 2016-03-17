@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FAF6981C1C9ABDF6005171DB /* DTPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D81C71F12200B352D0 /* DTPushNotification.h */; };
+		FAF6981C1C9ABDF6005171DB /* DTPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D81C71F12200B352D0 /* DTPushNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAF6981D1C9ABDF6005171DB /* DTPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956DA1C71F12700B352D0 /* DTPushNotification.m */; };
-		FAF698211C9ABF06005171DB /* TPNS_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF6981F1C9ABF06005171DB /* TPNS_iOS.h */; };
+		FAF698211C9ABF06005171DB /* TPNS_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF6981F1C9ABF06005171DB /* TPNS_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -283,6 +283,7 @@
 				FAF6981B1C9ABDEF005171DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
