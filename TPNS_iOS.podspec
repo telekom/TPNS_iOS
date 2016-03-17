@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                = 'TPNS_iOS'
-  spec.version             = '0.9.1'
+  spec.version             = '0.9.2'
   spec.license             = 'MIT'
   spec.authors             = { 'Deutsche Telekom AG' => 'tpns@telekom.de' }
   spec.homepage            = 'http://telekom.de'
