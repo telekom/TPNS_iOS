@@ -7,19 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DDB956D91C71F12200B352D0 /* DTPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D81C71F12200B352D0 /* DTPushNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DDB956DB1C71F12700B352D0 /* DTPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956DA1C71F12700B352D0 /* DTPushNotification.m */; };
+		FAF698171C9ABDEF005171DB /* TPNS.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF698161C9ABDEF005171DB /* TPNS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAF6981C1C9ABDF6005171DB /* DTPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D81C71F12200B352D0 /* DTPushNotification.h */; };
+		FAF6981D1C9ABDF6005171DB /* DTPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956DA1C71F12700B352D0 /* DTPushNotification.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DDB956CD1C71CF9200B352D0 /* TPNS_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPNS_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB956D21C71CF9200B352D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDB956D81C71F12200B352D0 /* DTPushNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPushNotification.h; sourceTree = "<group>"; };
 		DDB956DA1C71F12700B352D0 /* DTPushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPushNotification.m; sourceTree = "<group>"; };
+		FAF698141C9ABDEF005171DB /* TPNS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPNS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAF698161C9ABDEF005171DB /* TPNS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPNS.h; sourceTree = "<group>"; };
+		FAF698181C9ABDEF005171DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		DDB956C91C71CF9200B352D0 /* Frameworks */ = {
+		FAF698101C9ABDEF005171DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +36,7 @@
 			isa = PBXGroup;
 			children = (
 				DDB956CF1C71CF9200B352D0 /* TPNS_iOS */,
+				FAF698151C9ABDEF005171DB /* TPNS */,
 				DDB956CE1C71CF9200B352D0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +44,7 @@
 		DDB956CE1C71CF9200B352D0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DDB956CD1C71CF9200B352D0 /* TPNS_iOS.framework */,
+				FAF698141C9ABDEF005171DB /* TPNS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,36 +59,46 @@
 			path = TPNS_iOS;
 			sourceTree = "<group>";
 		};
+		FAF698151C9ABDEF005171DB /* TPNS */ = {
+			isa = PBXGroup;
+			children = (
+				FAF698161C9ABDEF005171DB /* TPNS.h */,
+				FAF698181C9ABDEF005171DB /* Info.plist */,
+			);
+			path = TPNS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		DDB956CA1C71CF9200B352D0 /* Headers */ = {
+		FAF698111C9ABDEF005171DB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDB956D91C71F12200B352D0 /* DTPushNotification.h in Headers */,
+				FAF698171C9ABDEF005171DB /* TPNS.h in Headers */,
+				FAF6981C1C9ABDF6005171DB /* DTPushNotification.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		DDB956CC1C71CF9200B352D0 /* TPNS_iOS */ = {
+		FAF698131C9ABDEF005171DB /* TPNS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DDB956D51C71CF9200B352D0 /* Build configuration list for PBXNativeTarget "TPNS_iOS" */;
+			buildConfigurationList = FAF698191C9ABDEF005171DB /* Build configuration list for PBXNativeTarget "TPNS" */;
 			buildPhases = (
-				DDB956C81C71CF9200B352D0 /* Sources */,
-				DDB956C91C71CF9200B352D0 /* Frameworks */,
-				DDB956CA1C71CF9200B352D0 /* Headers */,
-				DDB956CB1C71CF9200B352D0 /* Resources */,
+				FAF6980F1C9ABDEF005171DB /* Sources */,
+				FAF698101C9ABDEF005171DB /* Frameworks */,
+				FAF698111C9ABDEF005171DB /* Headers */,
+				FAF698121C9ABDEF005171DB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TPNS_iOS;
-			productName = TPNS_iOS;
-			productReference = DDB956CD1C71CF9200B352D0 /* TPNS_iOS.framework */;
+			name = TPNS;
+			productName = TPNS;
+			productReference = FAF698141C9ABDEF005171DB /* TPNS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -96,8 +110,8 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Deutsche Telekom AG";
 				TargetAttributes = {
-					DDB956CC1C71CF9200B352D0 = {
-						CreatedOnToolsVersion = 7.2.1;
+					FAF698131C9ABDEF005171DB = {
+						CreatedOnToolsVersion = 7.2;
 					};
 				};
 			};
@@ -113,13 +127,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DDB956CC1C71CF9200B352D0 /* TPNS_iOS */,
+				FAF698131C9ABDEF005171DB /* TPNS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DDB956CB1C71CF9200B352D0 /* Resources */ = {
+		FAF698121C9ABDEF005171DB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -129,11 +143,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		DDB956C81C71CF9200B352D0 /* Sources */ = {
+		FAF6980F1C9ABDEF005171DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDB956DB1C71F12700B352D0 /* DTPushNotification.m in Sources */,
+				FAF6981D1C9ABDF6005171DB /* DTPushNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,42 +242,34 @@
 			};
 			name = Release;
 		};
-		DDB956D61C71CF9200B352D0 /* Debug */ = {
+		FAF6981A1C9ABDEF005171DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_STATIC_ANALYZER_MODE = deep;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TPNS_iOS/Info.plist;
+				INFOPLIST_FILE = TPNS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.telekom.TPNS-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = de.telekom.intern.TPNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				RUN_CLANG_STATIC_ANALYZER = YES;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		DDB956D71C71CF9200B352D0 /* Release */ = {
+		FAF6981B1C9ABDEF005171DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_STATIC_ANALYZER_MODE = deep;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = TPNS_iOS/Info.plist;
+				INFOPLIST_FILE = TPNS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.telekom.TPNS-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = de.telekom.intern.TPNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				RUN_CLANG_STATIC_ANALYZER = YES;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -280,14 +286,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DDB956D51C71CF9200B352D0 /* Build configuration list for PBXNativeTarget "TPNS_iOS" */ = {
+		FAF698191C9ABDEF005171DB /* Build configuration list for PBXNativeTarget "TPNS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DDB956D61C71CF9200B352D0 /* Debug */,
-				DDB956D71C71CF9200B352D0 /* Release */,
+				FAF6981A1C9ABDEF005171DB /* Debug */,
+				FAF6981B1C9ABDEF005171DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
