@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FAF698131C9ABDEF005171DB"
-               BuildableName = "TPNS.framework"
-               BlueprintName = "TPNS"
+               BuildableName = "TPNS_iOS.framework"
+               BlueprintName = "TPNS_iOS"
                ReferencedContainer = "container:TPNS_iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FAF698131C9ABDEF005171DB"
-            BuildableName = "TPNS.framework"
-            BlueprintName = "TPNS"
+            BuildableName = "TPNS_iOS.framework"
+            BlueprintName = "TPNS_iOS"
             ReferencedContainer = "container:TPNS_iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FAF698131C9ABDEF005171DB"
-            BuildableName = "TPNS.framework"
-            BlueprintName = "TPNS"
+            BuildableName = "TPNS_iOS.framework"
+            BlueprintName = "TPNS_iOS"
             ReferencedContainer = "container:TPNS_iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
