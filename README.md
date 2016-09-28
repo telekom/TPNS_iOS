@@ -15,11 +15,8 @@ $ gem install cocoapods
 
 To integrate TPNS_iOS into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-TODO: URL To Specs Repo
-
 ```ruby
-source 'https:// INSERT SPEC REPO'
-pod 'TPNS_iOS', '~> 1.0'
+pod 'TPNS_iOS', :git => 'https://github.com/dtag-dbu/TPNS_iOS.git' ,'~> 0.9'
 ```
 
 Then, run the following command:
@@ -42,7 +39,7 @@ $ brew install carthage
 To integrate TPNS_iOS_ into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-git "https://group-innovation-hub.wesp.telekom.net/gitlab/TPNS/TPNS_iOS.git" ~> 1.0
+git "https://github.com/dtag-dbu/TPNS_iOS.git" ~> 1.0
 ```
 
 Run `carthage` to build the framework and drag the built `TPNS_iOS.framework` into your Xcode project.
