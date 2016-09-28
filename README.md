@@ -16,7 +16,7 @@ $ gem install cocoapods
 To integrate TPNS_iOS into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'TPNS_iOS', :git => 'https://github.com/dtag-dbu/TPNS_iOS.git' ,'~> 0.9'
+pod 'TPNS_iOS', :git => 'https://github.com/dtag-dbu/TPNS_iOS.git'
 ```
 
 Then, run the following command:
