@@ -39,7 +39,7 @@ $ brew install carthage
 To integrate TPNS_iOS_ into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-git "https://github.com/dtag-dbu/TPNS_iOS.git" ~> 1.0
+git "https://github.com/dtag-dbu/TPNS_iOS.git" ~> 0.9
 ```
 
 Run `carthage` to build the framework and drag the built `TPNS_iOS.framework` into your Xcode project.
