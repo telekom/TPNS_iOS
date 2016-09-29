@@ -60,22 +60,25 @@ To register a device with TPNS start by calling the corresponding `UIApplication
 After the application gathered all the required information your AppDelegates `didRegisterForRemoteNotificationsWithDeviceToken` method will be called with a generated device token. Use is to register the device with TPNS:
 
 ```objective-c
-NSArray *params = @[@{@"key" : @"SomeAdditionalID", @"value" : @4711},
-                    @{@"key" : @"OtherID", @"value" : @"randomValue"}];
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
- DTPushNotification *tpns = [DTPushNotification sharedInstance];
+    NSArray *params = @[@{@"key" : @"SomeAdditionalID", @"value" : @4711},
+                            @{@"key" : @"OtherID", @"value" : @"randomValue"}];
+
+    DTPushNotification *tpns = [DTPushNotification sharedInstance];
     [tpns registerWithURL:[NSURL URLWithString:@"TPNS Endpoint"] //The different endpoints are defined in the DTPushNotification.h file
                    appKey:@"APPKEY"
                 pushToken:token
      additionalParameters:params
                   sandbox:YES
                completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
-                if (error) {
-                  //handle error
-                  return;
-                }
-                //save the deviceID
-    }];
+                       if (error) {
+                           //handle error
+                           return;
+                       }
+                       //save the deviceID
+                   }];
+}
 ```
 
 If your app needs the returned ``deviceID``, you must take care of storing it yourself.
