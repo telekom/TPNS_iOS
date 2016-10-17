@@ -21,6 +21,26 @@ NS_ASSUME_NONNULL_BEGIN
 + (DTPushNotification *)sharedInstance;
 
 /**
+ `serverURL` that was used for the registration
+ */
+@property (nonatomic, copy, readonly) NSURL *serverURL;
+
+/**
+ `appKey` that was used for the registration
+ */
+@property (nonatomic, copy, readonly) NSString *appKey;
+
+/**
+ `deviceId` URL that was used for the registration
+ */
+@property (nonatomic, copy, readonly) NSString *deviceId;
+
+/**
+ Property to check if the current device is already `registered`
+ */
+@property (nonatomic, assign, readonly, getter = isRegistered) BOOL registered;
+
+/**
  Registers the device with TPNS
 
  @param url The URL string of the TPNS server

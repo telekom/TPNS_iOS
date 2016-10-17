@@ -25,9 +25,9 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 @interface DTPushNotification (/*privat*/)
 
 @property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, strong) NSURL *serverURL;
-@property (nonatomic, strong) NSString *appKey;
-@property (nonatomic, strong) NSString *deviceId;
+@property (nonatomic, copy, readwrite) NSURL *serverURL;
+@property (nonatomic, copy, readwrite) NSString *appKey;
+@property (nonatomic, copy, readwrite) NSString *deviceId;
 @property (nonatomic, assign) BOOL registrationInProgress;
 
 @end
@@ -49,6 +49,11 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
         self.registrationInProgress = NO;        
     }
     return self;
+}
+
+- (BOOL)isRegistered {
+
+    return (self.deviceId.length > 0);
 }
 
 #pragma mark - Class Helper Methods
@@ -216,7 +221,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
                             } else {
                                 NSString *originalErrorMessage = responseData[@"message"];
-                                NSString *description;
+                                NSString *description = originalErrorMessage.length > 0 ? originalErrorMessage : @"No error description was provided";
                                 
                                 switch (response.statusCode) {
                                     case 422:
