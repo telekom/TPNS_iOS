@@ -9,7 +9,14 @@
 #import "AppDelegate.h"
 #import <TPNS_iOS/DTPushNotification.h>
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+    #import <UserNotifications/UserNotifications.h>
+#endif
+
 @interface AppDelegate ()
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+<UNUserNotificationCenterDelegate>
+#endif
 
 @end
 
@@ -19,6 +26,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+    }
+#endif
     
     return YES;
 }
@@ -34,5 +47,25 @@
     
     NSLog(@"%s %@", __FUNCTION__, userInfo);
 }
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler  {
+    
+    
+    NSLog(@"%s %@", __FUNCTION__, notification);
+    
+    completionHandler(UNNotificationPresentationOptionAlert);
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void(^)())completionHandler {
+    
+    NSLog(@"%s %@", __FUNCTION__, response.notification);
+    completionHandler();
+}
+#endif
 
 @end

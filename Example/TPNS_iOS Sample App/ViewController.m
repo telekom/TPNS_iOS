@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 #import <TPNS_iOS/DTPushNotification.h>
+#import <UserNotifications/UserNotifications.h>
 #import "AppDelegate.h"
+
 
 @interface ViewController ()
 
@@ -29,11 +31,35 @@
         }
     };
     
-    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-    [application registerUserNotificationSettings:mySettings];
     
-    [application registerForRemoteNotifications];
+    if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_9_x_Max) {
+        
+        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [application registerUserNotificationSettings:mySettings];
+    
+        [application registerForRemoteNotifications];
+    
+    }
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+    else {
+    
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert)
+                              completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                                  
+                                  if (nil == error) {
+                                      [application registerForRemoteNotifications];
+                                  }
+                                  
+                              }];
+        
+    }
+#endif
+
+    
+    
+
 }
 
 - (void)startRegisterCallWithDeviceToken:(NSData *)deviceToken {
@@ -57,17 +83,7 @@
                        message = [NSString stringWithFormat:@"The device could not be registered with TPNS. Errormessage was \"%@\"", error.localizedDescription];
                    }
                    
-                   UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
-                                                                                  message:message
-                                                                           preferredStyle:UIAlertControllerStyleAlert];
-                   
-                   UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                      style:UIAlertActionStyleDefault
-                                                                    handler:nil];
-                   
-                   [alert addAction:okAction];
-                   
-                   [self presentViewController:alert animated:YES completion:nil];
+                   [self showAlertWithTitle:title message:message];
                }];
 }
 
@@ -76,24 +92,29 @@
     [[DTPushNotification sharedInstance] unregisterWithCompletion:^(NSError * _Nullable error) {
         
         NSString *title = @"Success";
-        NSString *message = @"The device was successfully unregistered with TPNS";;
+        NSString *message = @"The device was successfully unregistered with TPNS";
         
         if (error) {
             title = @"Error";
             message = [NSString stringWithFormat:@"The device could not be unregistered with TPNS. Errormessage was \"%@\"", error.localizedDescription];
         }
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
-                                                                       message:message
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:nil];
-        
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:nil];
+        [self showAlertWithTitle:title message:message];
     }];
+}
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:nil];
+    
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end
