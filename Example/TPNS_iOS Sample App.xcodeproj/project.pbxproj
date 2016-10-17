@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		255360D3270BA76B2F668066 /* libPods-TPNS_iOS Sample App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 812DA52D85C47177433C110F /* libPods-TPNS_iOS Sample App.a */; };
+		4DE8AD613AC0FD97E131A8D6 /* libPods-TPNS_iOS Sample App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE520CB5A6DEDA5274A36E5 /* libPods-TPNS_iOS Sample App.a */; };
 		DDB956EB1C72200400B352D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956EA1C72200400B352D0 /* main.m */; };
 		DDB956EE1C72200400B352D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956ED1C72200400B352D0 /* AppDelegate.m */; };
 		DDB956F11C72200400B352D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956F01C72200400B352D0 /* ViewController.m */; };
@@ -17,9 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		268AB90E1AAA92BF410DB96D /* Pods-TPNS_iOS Sample App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPNS_iOS Sample App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App.debug.xcconfig"; sourceTree = "<group>"; };
-		61EECE48E566757D0DE10114 /* Pods-TPNS_iOS Sample App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPNS_iOS Sample App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App.release.xcconfig"; sourceTree = "<group>"; };
-		812DA52D85C47177433C110F /* libPods-TPNS_iOS Sample App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TPNS_iOS Sample App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DE520CB5A6DEDA5274A36E5 /* libPods-TPNS_iOS Sample App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TPNS_iOS Sample App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA8CEE3C04D183CB5251F56 /* Pods-TPNS_iOS Sample App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPNS_iOS Sample App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App.release.xcconfig"; sourceTree = "<group>"; };
+		9E6915D90969847C061D815B /* Pods-TPNS_iOS Sample App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPNS_iOS Sample App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App.debug.xcconfig"; sourceTree = "<group>"; };
 		DDB956E61C72200400B352D0 /* TPNS_iOS Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TPNS_iOS Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB956EA1C72200400B352D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DDB956EC1C72200400B352D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -38,18 +38,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				255360D3270BA76B2F668066 /* libPods-TPNS_iOS Sample App.a in Frameworks */,
+				4DE8AD613AC0FD97E131A8D6 /* libPods-TPNS_iOS Sample App.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		90E97D33F818FD4234B4D392 /* Pods */ = {
+		0C8767C8CC91458C2740C89D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				268AB90E1AAA92BF410DB96D /* Pods-TPNS_iOS Sample App.debug.xcconfig */,
-				61EECE48E566757D0DE10114 /* Pods-TPNS_iOS Sample App.release.xcconfig */,
+				9E6915D90969847C061D815B /* Pods-TPNS_iOS Sample App.debug.xcconfig */,
+				8DA8CEE3C04D183CB5251F56 /* Pods-TPNS_iOS Sample App.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -60,7 +60,7 @@
 				DDB956E81C72200400B352D0 /* TPNS_iOS Sample App */,
 				DDB957021C7221A500B352D0 /* Frameworks */,
 				DDB956E71C72200400B352D0 /* Products */,
-				90E97D33F818FD4234B4D392 /* Pods */,
+				0C8767C8CC91458C2740C89D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				DDB957001C72219700B352D0 /* TPNS_iOS.framework */,
-				812DA52D85C47177433C110F /* libPods-TPNS_iOS Sample App.a */,
+				2DE520CB5A6DEDA5274A36E5 /* libPods-TPNS_iOS Sample App.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,12 +112,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDB956FD1C72200400B352D0 /* Build configuration list for PBXNativeTarget "TPNS_iOS Sample App" */;
 			buildPhases = (
-				73560ED90770937A5C2F0FC0 /* Check Pods Manifest.lock */,
+				91F154CEDDF29C29DD858AF4 /* [CP] Check Pods Manifest.lock */,
 				DDB956E21C72200400B352D0 /* Sources */,
 				DDB956E31C72200400B352D0 /* Frameworks */,
 				DDB956E41C72200400B352D0 /* Resources */,
-				277889F21A76C75C8BA2F6A2 /* Embed Pods Frameworks */,
-				E84FC081437319ACD5E2F3C6 /* Copy Pods Resources */,
+				45DD344DECC7BAF4CB16B533 /* [CP] Embed Pods Frameworks */,
+				2A22693A4208FD406C216C62 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -180,14 +180,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		277889F21A76C75C8BA2F6A2 /* Embed Pods Frameworks */ = {
+		2A22693A4208FD406C216C62 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45DD344DECC7BAF4CB16B533 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,34 +210,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		73560ED90770937A5C2F0FC0 /* Check Pods Manifest.lock */ = {
+		91F154CEDDF29C29DD858AF4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E84FC081437319ACD5E2F3C6 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -346,7 +346,7 @@
 		};
 		DDB956FE1C72200400B352D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 268AB90E1AAA92BF410DB96D /* Pods-TPNS_iOS Sample App.debug.xcconfig */;
+			baseConfigurationReference = 9E6915D90969847C061D815B /* Pods-TPNS_iOS Sample App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Björn Richter (QJ5CZ849XQ)";
@@ -360,7 +360,7 @@
 		};
 		DDB956FF1C72200400B352D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61EECE48E566757D0DE10114 /* Pods-TPNS_iOS Sample App.release.xcconfig */;
+			baseConfigurationReference = 8DA8CEE3C04D183CB5251F56 /* Pods-TPNS_iOS Sample App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Proventa AG (JVK74BEX46)";

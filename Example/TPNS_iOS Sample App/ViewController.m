@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <TPNS_iOS/DTPushNotification.h>
+#import <TPNS_iOS/TPNS_iOS.h>
 #import <UserNotifications/UserNotifications.h>
 #import "AppDelegate.h"
 
