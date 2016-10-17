@@ -23,3 +23,4 @@ FOUNDATION_EXPORT NSString *const DTPNSErrorDomain;
 //Helper Categories
 #import "NSError+TPNS.h"
 #import "NSMutableURLRequest+TPNS.h"
+#import "NSURLSession+TPNS.h"

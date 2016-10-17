@@ -202,12 +202,9 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     req.HTTPMethod = @"POST";
     
-    [self executeDataTaskWithURL:reqURL
-                           request:req
-                         inSession:self.session
-                   queryParameters:nil
-                        completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
-                            
+    [self.session TPNS_executeDataTaskWithRequest:req
+                                       completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
+                                           
                             if (!error && 200 == response.statusCode) {
                                 
                                 [self callRegisterCompletion:completion deviceID:self.deviceId error:nil];
@@ -241,11 +238,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
     req.HTTPMethod = @"PUT";
     
-    [self executeDataTaskWithURL:reqURL
-                         request:req
-                       inSession:self.session
-                 queryParameters:nil
-                      completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
+    [self.session TPNS_executeDataTaskWithRequest:req
+                                       completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                          
                           if (!error && 200 == response.statusCode) {
                               self.serverURLString = nil;
@@ -265,58 +259,5 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     
 }
-
-#pragma mark - Base Request
-- (NSMutableURLRequest *)baseJSONRequestWithURL:(NSURL *)url
-                                 bodyParameters:(NSDictionary *)bodyParameters
-{
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                                                                cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                                                            timeoutInterval:60.];
-    
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    if (bodyParameters) {
-        NSError *error;
-        NSData *bodyData = [NSJSONSerialization dataWithJSONObject:bodyParameters
-                                                           options:0
-                                                             error:&error];
-        
-        if (!error) {
-            request.HTTPBody = bodyData;
-        }
-    }
-    
-    return request;
-}
-
-#pragma mark - Data Task
-- (void)executeDataTaskWithURL:(NSURL *)url
-                       request:(NSMutableURLRequest *)request
-                     inSession:(NSURLSession *)session
-               queryParameters:(NSDictionary *)queryParameters
-                    completion:(void(^)(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error))completion
-{
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                            completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                
-                                                NSDictionary *responseDict;
-                                                if (data) {
-                                                    responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                                }
-                                                
-                                                if (completion) {
-                                                    completion(responseDict, (NSHTTPURLResponse *)response, error);
-                                                }
-                                                
-                                    }];
-    
-    [task resume];
-}
-
-
-
 
 @end
