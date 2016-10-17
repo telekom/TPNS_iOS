@@ -50,11 +50,28 @@ Run `carthage` to build the framework and drag the built `TPNS_iOS.framework` in
 
 To register a device with TPNS start by calling the corresponding `UIApplication` methods:
 
+iOS 9 and prior:
 ```objective-c
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
     [application registerUserNotificationSettings:mySettings];
     [application registerForRemoteNotifications];
+```
+
+iOS 10+:
+```objective-c
+UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+center.delegate = self;
+
+UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+[center requestAuthorizationWithOptions:types
+                      completionHandler:^(BOOL granted, NSError * _Nullable error) {
+
+                          if (nil == error) {
+                              [application registerForRemoteNotifications];
+                          }
+
+                      }];
 ```
 
 After the application gathered all the required information your AppDelegates `didRegisterForRemoteNotificationsWithDeviceToken` method will be called with a generated device token. Use is to register the device with TPNS:
