@@ -7,6 +7,6 @@ Pod::Spec.new do |spec|
   spec.summary             = 'TPNS_iOS is a library to simplify the device registration and unregistration with Telekom Push Notification Service (TPNS).'
   spec.source              = { :git => 'https://github.com/dtag-dbu/TPNS_iOS.git', :tag => spec.version }
   spec.requires_arc        = true
-  spec.public_header_files = 'TPNS_iOS/DTPushNotification.h'
-  spec.source_files        = 'TPNS_iOS/DTPushNotification.*'
+  spec.public_header_files = 'TPNS_iOS/*.h'
+  spec.source_files        = 'TPNS_iOS/*.m'
 end
