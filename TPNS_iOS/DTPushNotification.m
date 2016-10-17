@@ -214,29 +214,9 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                 [self callRegisterCompletion:completion deviceID:self.deviceId error:nil];
 
                             } else {
+                                
                                 NSString *originalErrorMessage = responseData[@"message"];
-                                NSString *description = originalErrorMessage.length > 0 ? originalErrorMessage : @"No error description was provided";
-                                
-                                switch (response.statusCode) {
-                                    case 422:
-                                        description = [NSString stringWithFormat:@"Appkey, DeviceId or Application Type empty / ivalid (original error:%@)", originalErrorMessage];
-                                        break;
-                                    case 500:
-                                        description = [NSString stringWithFormat:@"Internal Server Error (original error:%@)", originalErrorMessage];
-                                        break;
-                                    case 400:
-                                        description = [NSString stringWithFormat:@"Bad Request (original error:%@)", originalErrorMessage];
-                                        break;
-                                    case 403:
-                                        description = [NSString stringWithFormat:@"ApiKey invalid / not authorized (original error:%@)", originalErrorMessage];
-                                        break;
-                                    default:
-                                        description = [NSString stringWithFormat:@"Request failed (original error:%@)", originalErrorMessage];
-                                        break;
-                                }
-                                
-                                
-                                NSError *customError = [NSError TPNS_errorWithCode:response.statusCode description:description];
+                                NSError *customError = [NSError TPNS_errorWithCode:response.statusCode originalErrorMessage:originalErrorMessage];
                                 [self callRegisterCompletion:completion deviceID:nil error:customError];
                             }
                             

@@ -12,4 +12,6 @@
 
 + (instancetype)TPNS_errorWithCode:(NSUInteger)code description:(NSString *)description;
 
++ (instancetype)TPNS_errorWithCode:(NSUInteger)code originalErrorMessage:(NSString *)message;
+
 @end
