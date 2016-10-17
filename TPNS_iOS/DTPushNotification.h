@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString * __nonnull const DTPNSURLStringProduction;
-FOUNDATION_EXPORT NSString * __nonnull const DTPNSURLStringPreProduction;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DTPushNotification : NSObject
