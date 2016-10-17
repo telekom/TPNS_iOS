@@ -9,7 +9,6 @@
 #import "DTPushNotification.h"
 #import "TPNS_iOS.h"
 
-
 //Defaults
 static NSString *DTPNSUserDefaultsServerURLString = @"DTPNSUserDefaultsServerURLString";
 static NSString *DTPNSUserDefaultsAppKey          = @"DTPNSUserDefaultsAppKey";
@@ -71,7 +70,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 #pragma mark - Custom Setter and Getters
 - (NSURL *)serverURL {
-    if (!_serverURL) {
+    if (nil == _serverURL) {
         
         NSString *serverURLString = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsServerURLString];
         if (serverURLString.length) {
@@ -93,7 +92,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (NSString *)appKey {
-    if (!_appKey) {
+    if (nil == _appKey) {
         _appKey = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsAppKey];
     }
     
@@ -110,7 +109,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (NSString *)deviceId {
-    if (!_deviceId) {
+    if (nil == _deviceId) {
         _deviceId = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsDeviceID];
     }
     
@@ -163,10 +162,10 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
              completion:(void(^)(NSString *deviceID, NSError * _Nullable error))completion;
 
 {
-    NSParameterAssert(url.absoluteString.length);
+    NSParameterAssert(url.absoluteString.length > 0);
     NSParameterAssert(!url.isFileURL);
-    NSParameterAssert(appKey.length);
-    NSParameterAssert(pushToken.length);
+    NSParameterAssert(appKey.length > 0);
+    NSParameterAssert(pushToken.length > 0);
     
     if (self.registrationInProgress) {
         NSError *customError = [NSError TPNS_errorWithCode:500
@@ -194,7 +193,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                  @"applicationKey" : self.appKey,
                                  @"applicationType" : applicationType} mutableCopy];
     
-    if (additionalParameters) {
+    if (nil != additionalParameters) {
         bodyParams[@"additionalParameters"] = additionalParameters;
     }
 
