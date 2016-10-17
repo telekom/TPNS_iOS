@@ -100,6 +100,23 @@ After the application gathered all the required information your AppDelegates `d
 
 If your app needs the returned ``deviceID``, you must take care of storing it yourself.
 
+## Testing
+To test if everything is working you can run the following curl command in the terminal
+```
+curl -X POST -H "Accept: application/json" -H "Accept-Encoding: gzip" -H "Content-Type: application/json" -H "Cache-Control: no-cache"  -d '[{"message" : "Test","handlingLevel" : 1,"applicationKey" : "APPKEY","applicationTypes" : ["IOS_SAND"], "deviceIds" : ["YOUR SAVED DEVICE ID"]}]' "'TPNS Endpoint'/api/pushnotifications"
+```
+
+JSON Payload:
+```
+[{
+	"message": "Test",
+	"handlingLevel": 1, //1, 2 or 3, depends on your configuration
+	"applicationKey": "APP Key",
+	"applicationTypes": ["IOS_SAND"], // 'IOS_SAND' for Sandbox otherwise 'IOS'
+	"deviceIds": ["YOUR SAVED DEVICE ID"] // deviceID or null for every device
+}]
+```
+
 ### Available Endpoints
 * Production: https://tpns.molutions.de/TPNS/
 * Pre-Production: https://tpns-preprod.molutions.de/TPNS/
