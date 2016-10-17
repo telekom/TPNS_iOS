@@ -199,8 +199,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     }
 
     NSURL *reqURL = [self.serverURL URLByAppendingPathComponent:@"/api/device/register"];
-    NSMutableURLRequest *req = [self baseJSONRequestWithURL:reqURL
-                                             bodyParameters:bodyParams];
+    NSMutableURLRequest *req = [NSMutableURLRequest TPNS_JSONRequestWithURL:reqURL bodyParameters:bodyParams];
+    
     req.HTTPMethod = @"POST";
     
     [self executeDataTaskWithURL:reqURL
@@ -236,11 +236,10 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
         return;
     }
     
-    NSString *pathFormat = [NSString stringWithFormat:@"/api/application/%@/device/%@/unregister",self.appKey, self.deviceId];
+    NSString *pathFormat = [NSString stringWithFormat:@"/api/application/%@/device/%@/unregister", self.appKey, self.deviceId];
     NSURL *reqURL = [self.serverURL URLByAppendingPathComponent:pathFormat];
-    
-    NSMutableURLRequest *req = [self baseJSONRequestWithURL:reqURL
-                                             bodyParameters:nil];
+    NSMutableURLRequest *req = [NSMutableURLRequest TPNS_JSONRequestWithURL:reqURL bodyParameters:nil];
+
     req.HTTPMethod = @"PUT";
     
     [self executeDataTaskWithURL:reqURL
