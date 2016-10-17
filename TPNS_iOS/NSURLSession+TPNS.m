@@ -10,6 +10,16 @@
 
 @implementation NSURLSession (TPNS)
 
++ (instancetype)TPNS_defaultSession {
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyAlways;
+    config.HTTPCookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:nil];
+
+    return session;
+}
+
 - (void)TPNS_executeDataTaskWithRequest:(NSMutableURLRequest *)request
                              completion:(void(^)(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error))completion
 {

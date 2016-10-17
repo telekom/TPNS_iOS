@@ -35,10 +35,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     self = [super init];
     if (self) {
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        config.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyAlways;
-        config.HTTPCookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-        self.session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:nil];
+        
+        self.session = [NSURLSession TPNS_defaultSession];
         self.registrationInProgress = NO;        
     }
     return self;

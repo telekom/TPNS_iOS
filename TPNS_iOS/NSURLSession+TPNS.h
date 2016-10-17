@@ -10,6 +10,8 @@
 
 @interface NSURLSession (TPNS)
 
++ (instancetype)TPNS_defaultSession;
+
 - (void)TPNS_executeDataTaskWithRequest:(NSMutableURLRequest *)request
                              completion:(void(^)(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error))completion;
 
