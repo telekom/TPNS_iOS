@@ -9,4 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #import "DTPushNotification.h"
+#import "NSError+TPNS.h"
 
+//
+FOUNDATION_EXPORT NSString *const DTPNSURLStringProduction;
+FOUNDATION_EXPORT NSString *const DTPNSURLStringPreProduction;
+
+//String constants
+FOUNDATION_EXPORT NSString *const DTPNSApplicationTypeiOS;
+FOUNDATION_EXPORT NSString *const DTPNSApplicationTypeiOSSandbox;
+FOUNDATION_EXPORT NSString *const DTPNSErrorDomain;

@@ -7,14 +7,8 @@
 //
 
 #import "DTPushNotification.h"
+#import "TPNS_iOS.h"
 
-NSString *const DTPNSURLStringProduction    = @"https://tpns.molutions.de/TPNS";
-NSString *const DTPNSURLStringPreProduction = @"https://tpns-preprod.molutions.de/TPNS";
-
-//String constants
-static NSString *DTPNSApplicationTypeiOS        = @"IOS";
-static NSString *DTPNSApplicationTypeiOSSandbox = @"IOS_SAND";
-static NSString *DTPNSErrorDomain               = @"de.telekom.TPNS";
 
 //Defaults
 static NSString *DTPNSUserDefaultsServerURLString = @"DTPNSUserDefaultsServerURLString";
@@ -175,8 +169,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     NSParameterAssert(pushToken.length);
     
     if (self.registrationInProgress) {
-        NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"There is already a registration in progress. Ignoring addional request."};
-        NSError *customError = [NSError errorWithDomain:DTPNSErrorDomain code:500 userInfo:userInfo];
+        NSError *customError = [NSError TPNS_errorWithCode:500
+                                               description:@"There is already a registration in progress. Ignoring addional request."];
         
         if (completion) {
             completion(nil, customError);
@@ -241,11 +235,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                         break;
                                 }
                                 
-                                NSDictionary *userInfo = @{NSLocalizedDescriptionKey: description};
-                                NSError *customError = [NSError errorWithDomain:DTPNSErrorDomain
-                                                                           code:response.statusCode
-                                                                       userInfo:userInfo];
                                 
+                                NSError *customError = [NSError TPNS_errorWithCode:response.statusCode description:description];
                                 [self callRegisterCompletion:completion deviceID:nil error:customError];
                             }
                             
@@ -258,10 +249,9 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 - (void)unregisterWithCompletion:(void(^)(NSError *error))completion {
     
     if (!self.serverURL.absoluteString.length || !self.appKey.length || !self.deviceId.length) {
-        NSError *customError = [NSError errorWithDomain:DTPNSErrorDomain
-                                                   code:500
-                                               userInfo:@{NSLocalizedDescriptionKey:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."}];
-
+        NSError *customError = [NSError TPNS_errorWithCode:500
+                                               description:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."];
+        
         [self callUnregisterCompletion:completion error:customError];
         return;
     }

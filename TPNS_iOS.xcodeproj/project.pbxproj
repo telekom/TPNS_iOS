@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FAB62C1C1DB50E25008A6399 /* NSError+TPNS.h in Headers */ = {isa = PBXBuildFile; fileRef = FAB62C1A1DB50E25008A6399 /* NSError+TPNS.h */; };
+		FAB62C1D1DB50E25008A6399 /* NSError+TPNS.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB62C1B1DB50E25008A6399 /* NSError+TPNS.m */; };
+		FAB62C1F1DB50EF3008A6399 /* TPNS_iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB62C1E1DB50EF3008A6399 /* TPNS_iOS.m */; };
 		FAF6981C1C9ABDF6005171DB /* DTPushNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB956D81C71F12200B352D0 /* DTPushNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FAF6981D1C9ABDF6005171DB /* DTPushNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956DA1C71F12700B352D0 /* DTPushNotification.m */; };
 		FAF698211C9ABF06005171DB /* TPNS_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = FAF6981F1C9ABF06005171DB /* TPNS_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -15,6 +18,9 @@
 /* Begin PBXFileReference section */
 		DDB956D81C71F12200B352D0 /* DTPushNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPushNotification.h; sourceTree = "<group>"; };
 		DDB956DA1C71F12700B352D0 /* DTPushNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPushNotification.m; sourceTree = "<group>"; };
+		FAB62C1A1DB50E25008A6399 /* NSError+TPNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+TPNS.h"; sourceTree = "<group>"; };
+		FAB62C1B1DB50E25008A6399 /* NSError+TPNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+TPNS.m"; sourceTree = "<group>"; };
+		FAB62C1E1DB50EF3008A6399 /* TPNS_iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPNS_iOS.m; sourceTree = "<group>"; };
 		FAF698141C9ABDEF005171DB /* TPNS_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPNS_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF6981E1C9ABF06005171DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAF6981F1C9ABF06005171DB /* TPNS_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPNS_iOS.h; sourceTree = "<group>"; };
@@ -50,10 +56,13 @@
 		DDB956CF1C71CF9200B352D0 /* TPNS_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				FAF6981F1C9ABF06005171DB /* TPNS_iOS.h */,
+				FAB62C1E1DB50EF3008A6399 /* TPNS_iOS.m */,
 				DDB956D81C71F12200B352D0 /* DTPushNotification.h */,
 				DDB956DA1C71F12700B352D0 /* DTPushNotification.m */,
 				FAF6981E1C9ABF06005171DB /* Info.plist */,
-				FAF6981F1C9ABF06005171DB /* TPNS_iOS.h */,
+				FAB62C1A1DB50E25008A6399 /* NSError+TPNS.h */,
+				FAB62C1B1DB50E25008A6399 /* NSError+TPNS.m */,
 			);
 			path = TPNS_iOS;
 			sourceTree = "<group>";
@@ -65,6 +74,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB62C1C1DB50E25008A6399 /* NSError+TPNS.h in Headers */,
 				FAF6981C1C9ABDF6005171DB /* DTPushNotification.h in Headers */,
 				FAF698211C9ABF06005171DB /* TPNS_iOS.h in Headers */,
 			);
@@ -137,7 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB62C1D1DB50E25008A6399 /* NSError+TPNS.m in Sources */,
 				FAF6981D1C9ABDF6005171DB /* DTPushNotification.m in Sources */,
+				FAB62C1F1DB50EF3008A6399 /* TPNS_iOS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
