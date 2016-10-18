@@ -18,16 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (DTPushNotification *)sharedInstance;
 
 /**
- `serverURL` that was used for the registration
- */
-@property (nonatomic, copy, readonly) NSURL *serverURL;
-
-/**
- `appKey` that was used for the registration
- */
-@property (nonatomic, copy, readonly) NSString *appKey;
-
-/**
  `deviceId` URL that was used for the registration
  */
 @property (nonatomic, copy, readonly) NSString *deviceId;
