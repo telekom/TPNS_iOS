@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (DTPushNotification *)sharedInstance;
 
 /**
- `deviceId` URL that was used for the registration
+ `deviceId` that was generated during the registration
  */
 @property (nonatomic, copy, readonly) NSString *deviceId;
 
