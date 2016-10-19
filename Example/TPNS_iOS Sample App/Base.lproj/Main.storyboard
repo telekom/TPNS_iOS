@@ -57,7 +57,7 @@
                                     <action selector="unregisterAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iAc-vi-uHr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registration is perfomed upon launch of the App. To unregister, use the Button below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-0a-rEX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To register or unregister, use the Buttons below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-0a-rEX">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="384" id="C4b-qG-yKp"/>
                                     <constraint firstAttribute="height" constant="90" id="Qlj-y0-2CX"/>
@@ -93,13 +93,13 @@
                             <constraint firstItem="ZBY-4k-jni" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0A1-L3-Z17"/>
                             <constraint firstItem="fZk-1c-tye" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Aq-aC-ahQ"/>
                             <constraint firstItem="Qm4-0a-rEX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="48" id="6bW-6U-FWz"/>
-                            <constraint firstItem="9og-zp-gCm" firstAttribute="top" secondItem="Qm4-0a-rEX" secondAttribute="bottom" constant="64" id="9hd-HL-ynA"/>
+                            <constraint firstItem="ZBY-4k-jni" firstAttribute="top" secondItem="Qm4-0a-rEX" secondAttribute="bottom" constant="24" id="7jh-aR-all"/>
                             <constraint firstItem="fZk-1c-tye" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="62" id="BND-6S-ExT"/>
                             <constraint firstItem="Qm4-0a-rEX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F5r-Kc-MQX"/>
                             <constraint firstAttribute="trailing" secondItem="Qm4-0a-rEX" secondAttribute="trailing" constant="48" id="KG5-Sz-rrW"/>
                             <constraint firstItem="Qm4-0a-rEX" firstAttribute="top" secondItem="fZk-1c-tye" secondAttribute="bottom" constant="8" id="Sbb-Ut-fMA"/>
-                            <constraint firstItem="ZBY-4k-jni" firstAttribute="top" secondItem="9og-zp-gCm" secondAttribute="bottom" constant="49" id="Wl5-qC-Iyt"/>
                             <constraint firstItem="9og-zp-gCm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gZG-bT-gZ3"/>
+                            <constraint firstItem="9og-zp-gCm" firstAttribute="top" secondItem="ZBY-4k-jni" secondAttribute="bottom" constant="36" id="pWn-xi-yUr"/>
                         </constraints>
                     </view>
                 </viewController>
