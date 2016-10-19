@@ -165,9 +165,10 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     NSParameterAssert(appKey.length > 0);
     NSParameterAssert(pushToken.length > 0);
     
-    if (self.registrationInProgress) {
-        NSError *customError = [NSError TPNS_errorWithCode:500
-                                               description:@"There is already a registration in progress. Ignoring addional request."];
+    if (self.registrationInProgress || self.isRegistered) {
+        
+        NSInteger errorCode = self.registrationInProgress ? TPNSErrorCodeRegistrationIsAlreadyInProgress : TPNSErrorCodeUnregisterBeforeYouRegisterAgain;
+        NSError *customError = [NSError TPNS_errorWithCode:errorCode];
         
         if (completion) {
             completion(nil, customError);
@@ -210,7 +211,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                             } else {
                                 
                                 NSString *originalErrorMessage = responseData[@"message"];
-                                NSError *customError = [NSError TPNS_errorWithCode:response.statusCode originalErrorMessage:originalErrorMessage];
+                                NSError *customError = [NSError TPNS_httpErrorWithCode:response.statusCode originalErrorMessage:originalErrorMessage];
                                 [self callRegisterCompletion:completion deviceID:nil error:customError];
                             }
                             
@@ -223,8 +224,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 - (void)unregisterWithCompletion:(void(^)(NSError *error))completion {
     
     if (!self.serverURL.absoluteString.length || !self.appKey.length || !self.deviceId.length) {
-        NSError *customError = [NSError TPNS_errorWithCode:500
-                                               description:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."];
+        NSError *customError = [NSError TPNS_errorWithCode:TPNSErrorCodeDeviceNotRegistered];
         
         [self callUnregisterCompletion:completion error:customError];
         return;

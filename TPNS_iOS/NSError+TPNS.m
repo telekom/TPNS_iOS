@@ -11,18 +11,38 @@
 
 @implementation NSError (TPNS)
 
-+ (instancetype)TPNS_errorWithCode:(NSUInteger)code description:(NSString *)description {
++ (instancetype)TPNS_errorWithCode:(NSInteger)code description:(NSString *)description {
     NSParameterAssert(description.length > 0);
     
     NSDictionary *userInfo = @{NSLocalizedDescriptionKey: description};
     NSError *customError = [NSError errorWithDomain:DTPNSErrorDomain
                                                code:code
                                            userInfo:userInfo];
-
     return customError;
 }
 
-+ (instancetype)TPNS_errorWithCode:(NSUInteger)code originalErrorMessage:(NSString *)message {
++ (instancetype)TPNS_errorWithCode:(NSInteger)code {
+
+    NSString *description = @"";
+    switch (code) {
+        case TPNSErrorCodeDeviceNotRegistered:
+            description = @"Unable to unregister device - No AppID, DeviceID found. You need to register this device first.";
+            break;
+        case TPNSErrorCodeRegistrationIsAlreadyInProgress:
+            description = @"There is already a registration in progress. Ignoring addional request.";
+            break;
+        case TPNSErrorCodeUnregisterBeforeYouRegisterAgain:
+            description = @"Please unregister before you register again.";
+            break;
+        default:
+            description = @"Unknown error";
+            break;
+    }
+    
+    return [self TPNS_errorWithCode:code description:description];
+}
+
++ (instancetype)TPNS_httpErrorWithCode:(NSInteger)code originalErrorMessage:(NSString *)message {
 
     NSString *description = message.length > 0 ? message : @"No error description was provided";
     switch (code) {
@@ -43,8 +63,7 @@
             break;
     }
 
-    NSError *customError = [NSError TPNS_errorWithCode:code description:description];
-    return customError;
+    return [self TPNS_errorWithCode:code description:description];
 }
 
 @end
