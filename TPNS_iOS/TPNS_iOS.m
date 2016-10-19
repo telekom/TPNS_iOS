@@ -8,7 +8,7 @@
 
 #import "TPNS_iOS.h"
 
-//
+//API Endpoints
 NSString *const DTPNSURLStringProduction    = @"https://tpns.molutions.de/TPNS";
 NSString *const DTPNSURLStringPreProduction = @"https://tpns-preprod.molutions.de/TPNS";
 
