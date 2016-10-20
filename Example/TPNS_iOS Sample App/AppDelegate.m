@@ -37,6 +37,7 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"%s %@", __FUNCTION__, deviceToken);
     
     if (self.registeredForRemoteNotificationsCallback) {
         self.registeredForRemoteNotificationsCallback(self, deviceToken);

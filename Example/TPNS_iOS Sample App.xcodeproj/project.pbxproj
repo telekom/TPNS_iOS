@@ -31,6 +31,7 @@
 		DDB956F81C72200400B352D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDB956FA1C72200400B352D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDB957001C72219700B352D0 /* TPNS_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TPNS_iOS.framework; path = "../build/Debug-iphoneos/TPNS_iOS.framework"; sourceTree = "<group>"; };
+		FA359C5D1DB8C7270046906A /* TPNS_iOS Sample App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TPNS_iOS Sample App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 		DDB956E81C72200400B352D0 /* TPNS_iOS Sample App */ = {
 			isa = PBXGroup;
 			children = (
+				FA359C5D1DB8C7270046906A /* TPNS_iOS Sample App.entitlements */,
 				DDB956EC1C72200400B352D0 /* AppDelegate.h */,
 				DDB956ED1C72200400B352D0 /* AppDelegate.m */,
 				DDB956EF1C72200400B352D0 /* ViewController.h */,
@@ -139,7 +141,7 @@
 				TargetAttributes = {
 					DDB956E51C72200400B352D0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 7M7855TPZB;
+						DevelopmentTeam = VZVFUQTSQC;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -349,12 +351,15 @@
 			baseConfigurationReference = 9E6915D90969847C061D815B /* Pods-TPNS_iOS Sample App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Björn Richter (QJ5CZ849XQ)";
+				CODE_SIGN_ENTITLEMENTS = "TPNS_iOS Sample App/TPNS_iOS Sample App.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carl Jahn (V8VV58AR5X)";
+				DEVELOPMENT_TEAM = VZVFUQTSQC;
 				INFOPLIST_FILE = "TPNS_iOS Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.proventa.intern.PUNOtest;
+				PRODUCT_BUNDLE_IDENTIFIER = de.telekom.intern.homer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bc12b638-de42-4ade-b823-f99686eb64ea";
+				PROVISIONING_PROFILE = "1a5c2ffc-0801-4f26-9934-32af5cef74e1";
+				PROVISIONING_PROFILE_SPECIFIER = "NBSC Homer Dev";
 			};
 			name = Debug;
 		};
@@ -363,12 +368,15 @@
 			baseConfigurationReference = 8DA8CEE3C04D183CB5251F56 /* Pods-TPNS_iOS Sample App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Proventa AG (JVK74BEX46)";
+				CODE_SIGN_ENTITLEMENTS = "TPNS_iOS Sample App/TPNS_iOS Sample App.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Deutsche Telekom AG";
+				DEVELOPMENT_TEAM = VZVFUQTSQC;
 				INFOPLIST_FILE = "TPNS_iOS Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.proventa.intern.PUNOtest;
+				PRODUCT_BUNDLE_IDENTIFIER = de.telekom.intern.homer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4f756346-a6bc-4aca-9cb0-14fd6e572fe5";
+				PROVISIONING_PROFILE = "341c07c8-fed2-46a4-b258-c77109d30fe1";
+				PROVISIONING_PROFILE_SPECIFIER = "NBSC Homer Dist";
 			};
 			name = Release;
 		};

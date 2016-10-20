@@ -49,7 +49,8 @@
                               completionHandler:^(BOOL granted, NSError * _Nullable error) {
                                   
                                   if (nil == error) {
-                                      [application registerForRemoteNotifications];
+                                      
+                                      [[UIApplication sharedApplication] registerForRemoteNotifications];
                                   }
                                   
                               }];
