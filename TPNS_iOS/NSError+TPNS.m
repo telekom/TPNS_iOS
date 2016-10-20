@@ -23,7 +23,7 @@
 
 + (instancetype)TPNS_errorWithCode:(NSInteger)code {
 
-    NSString *description = @"";
+    NSString *description;
     switch (code) {
         case TPNSErrorCodeDeviceNotRegistered:
             description = @"Unable to unregister device - No AppID, DeviceID found. You need to register this device first.";
