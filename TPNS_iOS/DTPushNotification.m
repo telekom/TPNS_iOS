@@ -107,6 +107,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (NSString *)deviceId {
+ 
     if (nil == _deviceId) {
         _deviceId = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsDeviceID];
     }
@@ -115,12 +116,13 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (void)setDeviceId:(NSString *)deviceId {
+ 
     if (_deviceId == deviceId) {
         return;
     }
     
     _deviceId = deviceId;
-    [[self class] setUserDefaultsValue:_appKey forKey:DTPNSUserDefaultsDeviceID];
+    [[self class] setUserDefaultsValue:_deviceId forKey:DTPNSUserDefaultsDeviceID];
 }
 
 #pragma mark - Block Callback Helper methods
@@ -204,11 +206,15 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     [self.session TPNS_executeDataTaskWithRequest:req
                                        completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                                            
-                            if (error != nil && 200 == response.statusCode) {
+                            if (error == nil && 200 == response.statusCode) {
                                 
                                 [self callRegisterCompletion:completion deviceID:self.deviceId error:nil];
 
                             } else {
+                                
+                                self.serverURL = nil;
+                                self.appKey = nil;
+                                self.deviceId = nil;
                                 
                                 NSString *originalErrorMessage = responseData[@"message"];
                                 NSError *customError = [NSError TPNS_httpErrorWithCode:response.statusCode originalErrorMessage:originalErrorMessage];
@@ -239,7 +245,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     [self.session TPNS_executeDataTaskWithRequest:req
                                        completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                          
-                          if (!error && 200 == response.statusCode) {
+                          if (error == nil && 200 == response.statusCode) {
                               self.serverURLString = nil;
                               self.deviceId = nil;
                               self.appKey = nil;

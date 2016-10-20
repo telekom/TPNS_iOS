@@ -47,7 +47,7 @@
     NSString *description = message.length > 0 ? message : @"No error description was provided";
     switch (code) {
         case 422:
-            description = [NSString stringWithFormat:@"Appkey, DeviceId or Application Type empty / ivalid (original error:%@)", message];
+            description = [NSString stringWithFormat:@"Appkey, DeviceId or Application Type empty / invalid (original error:%@)", message];
             break;
         case 500:
             description = [NSString stringWithFormat:@"Internal Server Error (original error:%@)", message];
