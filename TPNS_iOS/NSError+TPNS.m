@@ -44,7 +44,7 @@
 
 + (instancetype)TPNS_httpErrorWithCode:(NSInteger)code originalErrorMessage:(NSString *)message {
 
-    NSString *description = message.length > 0 ? message : @"No error description was provided";
+    NSString *description;
     switch (code) {
         case 422:
             description = [NSString stringWithFormat:@"Appkey, DeviceId or Application Type empty / invalid (original error:%@)", message];
@@ -59,6 +59,7 @@
             description = [NSString stringWithFormat:@"ApiKey invalid / not authorized (original error:%@)", message];
             break;
         default:
+            message = message.length > 0 ? message : @"No error description was provided";
             description = [NSString stringWithFormat:@"Request failed (original error:%@)", message];
             break;
     }
