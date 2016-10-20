@@ -57,7 +57,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 + (void)setUserDefaultsValue:(id)value forKey:(NSString *)key {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (value) {
+    if (value != nil) {
         [defaults setObject:value forKey:key];
     } else {
         [defaults removeObjectForKey:key];
@@ -204,7 +204,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     [self.session TPNS_executeDataTaskWithRequest:req
                                        completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                                            
-                            if (!error && 200 == response.statusCode) {
+                            if (error != nil && 200 == response.statusCode) {
                                 
                                 [self callRegisterCompletion:completion deviceID:self.deviceId error:nil];
 
