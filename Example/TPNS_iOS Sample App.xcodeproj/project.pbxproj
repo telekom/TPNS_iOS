@@ -115,6 +115,7 @@
 			buildConfigurationList = DDB956FD1C72200400B352D0 /* Build configuration list for PBXNativeTarget "TPNS_iOS Sample App" */;
 			buildPhases = (
 				91F154CEDDF29C29DD858AF4 /* [CP] Check Pods Manifest.lock */,
+				FA6064F41DC0E46E009AA7EB /* Versionnumber */,
 				DDB956E21C72200400B352D0 /* Sources */,
 				DDB956E31C72200400B352D0 /* Frameworks */,
 				DDB956E41C72200400B352D0 /* Resources */,
@@ -226,6 +227,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		FA6064F41DC0E46E009AA7EB /* Versionnumber */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Versionnumber;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n# This script automatically sets the version and short version string of\n# an Xcode project from the Git repository containing the project.\n#\n\nset -o errexit\nset -o nounset\n\nINFO_PLIST_BUILD_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nINFO_PLIST_SOURCE_PATH=\"${INFOPLIST_FILE}\"\n\nBUILD=$(git rev-list --all --count)\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${BUILD}\" \"$INFO_PLIST_BUILD_PATH\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${BUILD}\" \"$INFO_PLIST_SOURCE_PATH\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
