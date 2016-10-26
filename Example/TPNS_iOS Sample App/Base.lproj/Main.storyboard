@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,11 +17,12 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TPNS Sample App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZk-1c-tye">
+                                <rect key="frame" x="114.5" y="82" width="146" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="He8-7s-5I1"/>
                                     <constraint firstAttribute="height" constant="21" id="UYk-gX-KPB"/>
@@ -40,6 +44,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9og-zp-gCm">
+                                <rect key="frame" x="151.5" y="291" width="72" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="Agi-rS-Xpr"/>
                                     <constraint firstAttribute="height" constant="30" id="BiZ-Ki-GOG"/>
@@ -58,6 +63,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To register or unregister, use the Buttons below." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qm4-0a-rEX">
+                                <rect key="frame" x="48" y="111" width="279" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="384" id="C4b-qG-yKp"/>
                                     <constraint firstAttribute="height" constant="90" id="Qlj-y0-2CX"/>
@@ -78,6 +84,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBY-4k-jni">
+                                <rect key="frame" x="158" y="225" width="59" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="4Xv-7V-GQa"/>
                                     <constraint firstAttribute="width" constant="59" id="u43-Ey-zIy"/>
@@ -87,25 +94,46 @@
                                     <action selector="registerForRemoteNotifications:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XZq-ak-NVm"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RrX-B2-jfE">
+                                <rect key="frame" x="24" y="416" width="327" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TPNS Device Token" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zl-xz-Nbp">
+                                <rect key="frame" x="112.5" y="371" width="150.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZBY-4k-jni" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0A1-L3-Z17"/>
                             <constraint firstItem="fZk-1c-tye" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Aq-aC-ahQ"/>
+                            <constraint firstItem="RrX-B2-jfE" firstAttribute="top" secondItem="7Zl-xz-Nbp" secondAttribute="bottom" constant="24" id="4sI-Sw-5GF"/>
+                            <constraint firstItem="RrX-B2-jfE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4vX-Y7-7AV"/>
                             <constraint firstItem="Qm4-0a-rEX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="48" id="6bW-6U-FWz"/>
                             <constraint firstItem="ZBY-4k-jni" firstAttribute="top" secondItem="Qm4-0a-rEX" secondAttribute="bottom" constant="24" id="7jh-aR-all"/>
                             <constraint firstItem="fZk-1c-tye" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="62" id="BND-6S-ExT"/>
                             <constraint firstItem="Qm4-0a-rEX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F5r-Kc-MQX"/>
                             <constraint firstAttribute="trailing" secondItem="Qm4-0a-rEX" secondAttribute="trailing" constant="48" id="KG5-Sz-rrW"/>
                             <constraint firstItem="Qm4-0a-rEX" firstAttribute="top" secondItem="fZk-1c-tye" secondAttribute="bottom" constant="8" id="Sbb-Ut-fMA"/>
+                            <constraint firstItem="RrX-B2-jfE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="24" id="Zc1-ZG-mT6"/>
+                            <constraint firstItem="7Zl-xz-Nbp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aAb-hJ-IGZ"/>
+                            <constraint firstAttribute="trailing" secondItem="RrX-B2-jfE" secondAttribute="trailing" constant="24" id="c9u-Zo-GGK"/>
                             <constraint firstItem="9og-zp-gCm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gZG-bT-gZ3"/>
+                            <constraint firstItem="7Zl-xz-Nbp" firstAttribute="top" secondItem="9og-zp-gCm" secondAttribute="bottom" constant="50" id="j5d-9P-4pn"/>
                             <constraint firstItem="9og-zp-gCm" firstAttribute="top" secondItem="ZBY-4k-jni" secondAttribute="bottom" constant="36" id="pWn-xi-yUr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="deviceIdTextfield" destination="RrX-B2-jfE" id="EF3-M9-26d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="610" y="318"/>
+            <point key="canvasLocation" x="608.79999999999995" y="317.99100449775113"/>
         </scene>
     </scenes>
 </document>

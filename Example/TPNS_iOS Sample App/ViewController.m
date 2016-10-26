@@ -12,11 +12,48 @@
 #import "AppDelegate.h"
 
 
-@interface ViewController ()
+@interface ViewController ()<UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *deviceIdTextfield;
 
 @end
 
 @implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.deviceIdTextfield.delegate = self;
+    self.deviceIdTextfield.text = [DTPushNotification sharedInstance].deviceId;
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (void)copyTextFieldContent:(id)sender {
+    
+    UIPasteboard* pb = [UIPasteboard generalPasteboard];
+    pb.string = self.deviceIdTextfield.text;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self becomeFirstResponder];
+        UIMenuController *menuController = [UIMenuController sharedMenuController];
+        UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"Copy" action:@selector(copyTextFieldContent:)];
+        
+        menuController.menuItems = @[copyItem];
+        
+        CGRect selectionRect = textField.frame;
+        
+        [menuController setTargetRect:selectionRect inView:self.view];
+        [menuController setMenuVisible:YES animated:YES];
+    });
+    
+    return NO;
+}
 
 - (IBAction)registerForRemoteNotifications:(id)sender {
     
@@ -65,19 +102,26 @@
 
 - (void)startRegisterCallWithDeviceToken:(NSData *)deviceToken {
     
-    NSArray *params = @[@{@"key" : @"SomeAdditionalID", @"value" : @4711},
-                        @{@"key" : @"OtherID", @"value" : @"randomValue"}];
+#ifdef DEBUG
+    BOOL sandbox = YES;
+#else
+    BOOL sandbox = NO;
+#endif
     
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
     [tpns registerWithURL:[NSURL URLWithString:DTPNSURLStringPreProduction]
-                   appKey:@"LoadTestApp3"
+                   appKey:@"YOUR TPNS APP ID"
                 pushToken:deviceToken
-     additionalParameters:params
-                  sandbox:YES
+     additionalParameters:nil
+                  sandbox:sandbox
                completion:^(NSString * _Nullable deviceID, NSError * _Nullable error) {
                    
                    NSString *title = @"Success";
-                   NSString *message = [NSString stringWithFormat:@"The device was successfully registered with TPNS. TPNS deviceID is \"%@\"", deviceID];
+                   NSString *message = [NSString stringWithFormat:@"The device was successfully registered with TPNS."];
+                   
+                   if (error == nil) {
+                        self.deviceIdTextfield.text = deviceID;
+                   }
                    
                    if (error) {
                        title = @"Error";
@@ -89,6 +133,8 @@
 }
 
 - (IBAction)unregisterAction:(id)sender {
+    
+    self.deviceIdTextfield.text = nil;
     
     [[DTPushNotification sharedInstance] unregisterWithCompletion:^(NSError * _Nullable error) {
         
