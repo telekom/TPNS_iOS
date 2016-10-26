@@ -80,7 +80,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     return _serverURL;
 }
 
-- (void)setServerURLString:(NSURL *)serverURL {
+- (void)setServerURL:(NSURL *)serverURL {
     if (_serverURL == serverURL) {
         return;
     }
@@ -246,7 +246,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                        completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                          
                           if (error == nil && 200 == response.statusCode) {
-                              self.serverURLString = nil;
+                              self.serverURL = nil;
                               self.deviceId = nil;
                               self.appKey = nil;
                               self.registrationInProgress = NO;
