@@ -39,7 +39,7 @@ $ brew install carthage
 To integrate TPNS_iOS_ into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-git "https://github.com/dtag-dbu/TPNS_iOS.git" ~> 0.9
+git "https://github.com/dtag-dbu/TPNS_iOS.git" ~> 1.0
 ```
 
 Run `carthage` to build the framework and drag the built `TPNS_iOS.framework` into your Xcode project.
@@ -83,7 +83,12 @@ After the application gathered all the required information your AppDelegates `d
                             @{@"key" : @"OtherID", @"value" : @"randomValue"}];
 
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
-    [tpns registerWithURL:[NSURL URLWithString:@"TPNS Endpoint"] //The different endpoints are defined in the DTPushNotification.h file
+    if(tpns.isRegistered) {
+    	//Already registered no need to register again
+    	return;
+    }
+    
+    [tpns registerWithURL:[NSURL URLWithString:@"TPNS Endpoint"] //The different endpoints are defined in the TPNS_iOS.h file
                    appKey:@"APPKEY"
                 pushToken:token
      additionalParameters:params
@@ -98,7 +103,48 @@ After the application gathered all the required information your AppDelegates `d
 }
 ```
 
-If your app needs the returned ``deviceID``, you must take care of storing it yourself.
+If your app needs the returned ``deviceID``, you can call the related property
+```objective-c
+[DTPushNotification sharedInstance].deviceId
+```
+
+To check if you already registered you just need to call ```registered``` method
+```objective-c
+[DTPushNotification sharedInstance].isRegistered
+```
+
+### Unregistering a Device
+
+To unregister the device, simple call:
+
+```objective-c
+
+
+DTPushNotification *tpns = [DTPushNotification sharedInstance];
+if(!tpns.isRegistered) {
+    //Not registered yet no need to unregister
+    return;
+}
+
+[tpns unregisterWithCompletion:^(NSError * _Nullable error) {
+        if (error) {
+              //handle error
+        }
+     }];
+```
+
+### Error Codes
+
+Beside the standard HTTP error codes there a more error codes in the ```NSError+TPNS.h``` file defined
+```objective-c
+typedef NS_ENUM(NSInteger, TPNSErrorCode)
+{
+    // General
+    TPNSErrorCodeDeviceNotRegistered                = -1000,
+    TPNSErrorCodeRegistrationIsAlreadyInProgress    = -1001,
+    TPNSErrorCodeUnregisterBeforeYouRegisterAgain   = -1002,
+};
+```
 
 ## Testing
 To test if everything is working you can run the following curl command in the terminal
@@ -121,14 +167,4 @@ JSON Payload:
 * Production: https://tpns.molutions.de/TPNS/
 * Pre-Production: https://tpns-preprod.molutions.de/TPNS/
 
-### Unregistering a Device
 
-To unregister the device, simple call:
-
-```objective-c
-[[DTPushNotification sharedInstance] unregisterWithCompletion:^(NSError * _Nullable error) {
-        if (error) {
-              //handle error
-        }
-     }];
-```

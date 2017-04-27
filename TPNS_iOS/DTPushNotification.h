@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString * __nonnull const DTPNSURLStringProduction;
-FOUNDATION_EXPORT NSString * __nonnull const DTPNSURLStringPreProduction;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DTPushNotification : NSObject
@@ -19,6 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
  Creates and returns an `DTPushNotification` object.
  */
 + (DTPushNotification *)sharedInstance;
+
+/**
+ `deviceId` that was generated during the registration
+ */
+@property (nonatomic, copy, readonly) NSString *deviceId;
+
+/**
+ Property to check if the current device is already `registered`
+ */
+@property (nonatomic, assign, readonly, getter = isRegistered) BOOL registered;
 
 /**
  Registers the device with TPNS

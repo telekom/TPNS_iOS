@@ -10,3 +10,17 @@
 
 #import "DTPushNotification.h"
 
+//API Endpoints
+FOUNDATION_EXPORT NSString *const DTPNSURLStringProduction;
+FOUNDATION_EXPORT NSString *const DTPNSURLStringPreProduction;
+
+//String constants
+FOUNDATION_EXPORT NSString *const DTPNSApplicationTypeiOS;
+FOUNDATION_EXPORT NSString *const DTPNSApplicationTypeiOSSandbox;
+
+FOUNDATION_EXPORT NSString *const DTPNSErrorDomain;
+
+//Helper Categories
+#import "NSError+TPNS.h"
+#import "NSMutableURLRequest+TPNS.h"
+#import "NSURLSession+TPNS.h"

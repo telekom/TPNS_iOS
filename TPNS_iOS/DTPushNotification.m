@@ -7,14 +7,7 @@
 //
 
 #import "DTPushNotification.h"
-
-NSString *const DTPNSURLStringProduction    = @"https://tpns.molutions.de/TPNS";
-NSString *const DTPNSURLStringPreProduction = @"https://tpns-preprod.molutions.de/TPNS";
-
-//String constants
-static NSString *DTPNSApplicationTypeiOS        = @"IOS";
-static NSString *DTPNSApplicationTypeiOSSandbox = @"IOS_SAND";
-static NSString *DTPNSErrorDomain               = @"de.telekom.TPNS";
+#import "TPNS_iOS.h"
 
 //Defaults
 static NSString *DTPNSUserDefaultsServerURLString = @"DTPNSUserDefaultsServerURLString";
@@ -25,9 +18,9 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 @interface DTPushNotification (/*privat*/)
 
 @property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, strong) NSURL *serverURL;
-@property (nonatomic, strong) NSString *appKey;
-@property (nonatomic, strong) NSString *deviceId;
+@property (nonatomic, copy) NSURL *serverURL;
+@property (nonatomic, copy) NSString *appKey;
+@property (nonatomic, copy, readwrite) NSString *deviceId;
 @property (nonatomic, assign) BOOL registrationInProgress;
 
 @end
@@ -42,13 +35,16 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     self = [super init];
     if (self) {
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        config.HTTPCookieAcceptPolicy = NSHTTPCookieAcceptPolicyAlways;
-        config.HTTPCookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-        self.session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:nil];
+        
+        self.session = [NSURLSession TPNS_defaultSession];
         self.registrationInProgress = NO;        
     }
     return self;
+}
+
+- (BOOL)isRegistered {
+
+    return (self.deviceId.length > 0);
 }
 
 #pragma mark - Class Helper Methods
@@ -61,7 +57,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 + (void)setUserDefaultsValue:(id)value forKey:(NSString *)key {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (value) {
+    if (value != nil) {
         [defaults setObject:value forKey:key];
     } else {
         [defaults removeObjectForKey:key];
@@ -72,7 +68,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 #pragma mark - Custom Setter and Getters
 - (NSURL *)serverURL {
-    if (!_serverURL) {
+    if (nil == _serverURL) {
         
         NSString *serverURLString = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsServerURLString];
         if (serverURLString.length) {
@@ -84,7 +80,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     return _serverURL;
 }
 
-- (void)setServerURLString:(NSURL *)serverURL {
+- (void)setServerURL:(NSURL *)serverURL {
     if (_serverURL == serverURL) {
         return;
     }
@@ -94,7 +90,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (NSString *)appKey {
-    if (!_appKey) {
+    if (nil == _appKey) {
         _appKey = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsAppKey];
     }
     
@@ -111,7 +107,8 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (NSString *)deviceId {
-    if (!_deviceId) {
+ 
+    if (nil == _deviceId) {
         _deviceId = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsDeviceID];
     }
     
@@ -119,6 +116,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (void)setDeviceId:(NSString *)deviceId {
+ 
     if (_deviceId == deviceId) {
         return;
     }
@@ -164,14 +162,15 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
              completion:(void(^)(NSString *deviceID, NSError * _Nullable error))completion;
 
 {
-    NSParameterAssert(url.absoluteString.length);
+    NSParameterAssert(url.absoluteString.length > 0);
     NSParameterAssert(!url.isFileURL);
-    NSParameterAssert(appKey.length);
-    NSParameterAssert(pushToken.length);
+    NSParameterAssert(appKey.length > 0);
+    NSParameterAssert(pushToken.length > 0);
     
-    if (self.registrationInProgress) {
-        NSDictionary *userInfo = @{NSLocalizedDescriptionKey: @"There is already a registration in progress. Ignoring addional request."};
-        NSError *customError = [NSError errorWithDomain:DTPNSErrorDomain code:500 userInfo:userInfo];
+    if (self.registrationInProgress || self.isRegistered) {
+        
+        NSInteger errorCode = self.registrationInProgress ? TPNSErrorCodeRegistrationIsAlreadyInProgress : TPNSErrorCodeUnregisterBeforeYouRegisterAgain;
+        NSError *customError = [NSError TPNS_errorWithCode:errorCode];
         
         if (completion) {
             completion(nil, customError);
@@ -195,52 +194,30 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                  @"applicationKey" : self.appKey,
                                  @"applicationType" : applicationType} mutableCopy];
     
-    if (additionalParameters) {
+    if (nil != additionalParameters) {
         bodyParams[@"additionalParameters"] = additionalParameters;
     }
 
     NSURL *reqURL = [self.serverURL URLByAppendingPathComponent:@"/api/device/register"];
-    NSMutableURLRequest *req = [self baseJSONRequestWithURL:reqURL
-                                             bodyParameters:bodyParams];
+    NSMutableURLRequest *req = [NSMutableURLRequest TPNS_JSONRequestWithURL:reqURL bodyParameters:bodyParams];
+    
     req.HTTPMethod = @"POST";
     
-    [self executeDataTaskWithURL:reqURL
-                           request:req
-                         inSession:self.session
-                   queryParameters:nil
-                        completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
-                            
-                            if (!error && 200 == response.statusCode) {
+    [self.session TPNS_executeDataTaskWithRequest:req
+                                       completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
+                                           
+                            if (error == nil && 200 == response.statusCode) {
                                 
                                 [self callRegisterCompletion:completion deviceID:self.deviceId error:nil];
 
                             } else {
+                                
+                                self.serverURL = nil;
+                                self.appKey = nil;
+                                self.deviceId = nil;
+                                
                                 NSString *originalErrorMessage = responseData[@"message"];
-                                NSString *description;
-                                
-                                switch (response.statusCode) {
-                                    case 422:
-                                        description = [NSString stringWithFormat:@"Appkey, DeviceId or Application Type empty / ivalid (original error:%@)", originalErrorMessage];
-                                        break;
-                                    case 500:
-                                        description = [NSString stringWithFormat:@"Internal Server Error (original error:%@)", originalErrorMessage];
-                                        break;
-                                    case 400:
-                                        description = [NSString stringWithFormat:@"Bad Request (original error:%@)", originalErrorMessage];
-                                        break;
-                                    case 403:
-                                        description = [NSString stringWithFormat:@"ApiKey invalid / not authorized (original error:%@)", originalErrorMessage];
-                                        break;
-                                    default:
-                                        description = [NSString stringWithFormat:@"Request failed (original error:%@)", originalErrorMessage];
-                                        break;
-                                }
-                                
-                                NSDictionary *userInfo = @{NSLocalizedDescriptionKey: description};
-                                NSError *customError = [NSError errorWithDomain:DTPNSErrorDomain
-                                                                           code:response.statusCode
-                                                                       userInfo:userInfo];
-                                
+                                NSError *customError = [NSError TPNS_httpErrorWithCode:response.statusCode originalErrorMessage:originalErrorMessage];
                                 [self callRegisterCompletion:completion deviceID:nil error:customError];
                             }
                             
@@ -253,29 +230,23 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 - (void)unregisterWithCompletion:(void(^)(NSError *error))completion {
     
     if (!self.serverURL.absoluteString.length || !self.appKey.length || !self.deviceId.length) {
-        NSError *customError = [NSError errorWithDomain:DTPNSErrorDomain
-                                                   code:500
-                                               userInfo:@{NSLocalizedDescriptionKey:@"Unable to unregister device - No AppID, DeviceID found. You need to register this device first."}];
-
+        NSError *customError = [NSError TPNS_errorWithCode:TPNSErrorCodeDeviceNotRegistered];
+        
         [self callUnregisterCompletion:completion error:customError];
         return;
     }
     
-    NSString *pathFormat = [NSString stringWithFormat:@"/api/application/%@/device/%@/unregister",self.appKey, self.deviceId];
+    NSString *pathFormat = [NSString stringWithFormat:@"/api/application/%@/device/%@/unregister", self.appKey, self.deviceId];
     NSURL *reqURL = [self.serverURL URLByAppendingPathComponent:pathFormat];
-    
-    NSMutableURLRequest *req = [self baseJSONRequestWithURL:reqURL
-                                             bodyParameters:nil];
+    NSMutableURLRequest *req = [NSMutableURLRequest TPNS_JSONRequestWithURL:reqURL bodyParameters:nil];
+
     req.HTTPMethod = @"PUT";
     
-    [self executeDataTaskWithURL:reqURL
-                         request:req
-                       inSession:self.session
-                 queryParameters:nil
-                      completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
+    [self.session TPNS_executeDataTaskWithRequest:req
+                                       completion:^(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error) {
                          
-                          if (!error && 200 == response.statusCode) {
-                              self.serverURLString = nil;
+                          if (error == nil && 200 == response.statusCode) {
+                              self.serverURL = nil;
                               self.deviceId = nil;
                               self.appKey = nil;
                               self.registrationInProgress = NO;
@@ -292,58 +263,5 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     
 }
-
-#pragma mark - Base Request
-- (NSMutableURLRequest *)baseJSONRequestWithURL:(NSURL *)url
-                                 bodyParameters:(NSDictionary *)bodyParameters
-{
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                                                                cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                                                            timeoutInterval:60.];
-    
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    if (bodyParameters) {
-        NSError *error;
-        NSData *bodyData = [NSJSONSerialization dataWithJSONObject:bodyParameters
-                                                           options:0
-                                                             error:&error];
-        
-        if (!error) {
-            request.HTTPBody = bodyData;
-        }
-    }
-    
-    return request;
-}
-
-#pragma mark - Data Task
-- (void)executeDataTaskWithURL:(NSURL *)url
-                       request:(NSMutableURLRequest *)request
-                     inSession:(NSURLSession *)session
-               queryParameters:(NSDictionary *)queryParameters
-                    completion:(void(^)(NSDictionary *responseData, NSHTTPURLResponse *response, NSError *error))completion
-{
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                            completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                
-                                                NSDictionary *responseDict;
-                                                if (data) {
-                                                    responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                                }
-                                                
-                                                if (completion) {
-                                                    completion(responseDict, (NSHTTPURLResponse *)response, error);
-                                                }
-                                                
-                                    }];
-    
-    [task resume];
-}
-
-
-
 
 @end
