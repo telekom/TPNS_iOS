@@ -110,7 +110,7 @@
     
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
     [tpns registerWithURL:[NSURL URLWithString:DTPNSURLStringPreProduction]
-                   appKey:@"com.telekom.intern.homer"
+                   appKey:@"YOUR APP KEY"
                 pushToken:deviceToken
      additionalParameters:nil
                   sandbox:sandbox
