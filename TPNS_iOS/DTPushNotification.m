@@ -27,7 +27,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSURL *serverURL;
 @property (nonatomic, strong) NSString *appKey;
-@property (nonatomic, strong) NSString *deviceId;
+@property (nonatomic, strong, readonly) NSString *deviceId;
 @property (nonatomic, assign) BOOL registrationInProgress;
 
 @end
@@ -36,7 +36,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 @implementation DTPushNotification
 @synthesize serverURL = _serverURL;
 @synthesize appKey    = _appKey;
-@synthesize deviceId  = _deviceId;
 
 - (id)init {
     
@@ -111,20 +110,15 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (NSString *)deviceId {
-    if (!_deviceId) {
-        _deviceId = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsDeviceID];
+    
+    NSString *deviceId = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsDeviceID];
+    
+    if (!deviceId) {
+        deviceId = [NSUUID UUID].UUIDString;
+        [[self class] setUserDefaultsValue:deviceId forKey:DTPNSUserDefaultsDeviceID];
     }
     
-    return _deviceId;
-}
-
-- (void)setDeviceId:(NSString *)deviceId {
-    if (_deviceId == deviceId) {
-        return;
-    }
-    
-    _deviceId = deviceId;
-    [[self class] setUserDefaultsValue:_deviceId forKey:DTPNSUserDefaultsDeviceID];
+    return deviceId;
 }
 
 #pragma mark - Block Callback Helper methods
@@ -186,7 +180,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     self.serverURL = url;
     self.appKey = appKey;
-    self.deviceId = [NSUUID UUID].UUIDString;
     
     NSString *applicationType = sandbox ? DTPNSApplicationTypeiOSSandbox : DTPNSApplicationTypeiOS;
     
@@ -276,7 +269,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                          
                           if (!error && 200 == response.statusCode) {
                               self.serverURLString = nil;
-                              self.deviceId = nil;
                               self.appKey = nil;
                               self.registrationInProgress = NO;
 
