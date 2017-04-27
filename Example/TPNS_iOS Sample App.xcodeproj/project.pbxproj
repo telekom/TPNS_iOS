@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		255360D3270BA76B2F668066 /* libPods-TPNS_iOS Sample App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 812DA52D85C47177433C110F /* libPods-TPNS_iOS Sample App.a */; };
+		4DE8AD613AC0FD97E131A8D6 /* libPods-TPNS_iOS Sample App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DE520CB5A6DEDA5274A36E5 /* libPods-TPNS_iOS Sample App.a */; };
 		DDB956EB1C72200400B352D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956EA1C72200400B352D0 /* main.m */; };
 		DDB956EE1C72200400B352D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956ED1C72200400B352D0 /* AppDelegate.m */; };
 		DDB956F11C72200400B352D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB956F01C72200400B352D0 /* ViewController.m */; };
@@ -17,9 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		268AB90E1AAA92BF410DB96D /* Pods-TPNS_iOS Sample App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPNS_iOS Sample App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App.debug.xcconfig"; sourceTree = "<group>"; };
-		61EECE48E566757D0DE10114 /* Pods-TPNS_iOS Sample App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPNS_iOS Sample App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App.release.xcconfig"; sourceTree = "<group>"; };
-		812DA52D85C47177433C110F /* libPods-TPNS_iOS Sample App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TPNS_iOS Sample App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DE520CB5A6DEDA5274A36E5 /* libPods-TPNS_iOS Sample App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TPNS_iOS Sample App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA8CEE3C04D183CB5251F56 /* Pods-TPNS_iOS Sample App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPNS_iOS Sample App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App.release.xcconfig"; sourceTree = "<group>"; };
+		9E6915D90969847C061D815B /* Pods-TPNS_iOS Sample App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TPNS_iOS Sample App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App.debug.xcconfig"; sourceTree = "<group>"; };
 		DDB956E61C72200400B352D0 /* TPNS_iOS Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TPNS_iOS Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB956EA1C72200400B352D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DDB956EC1C72200400B352D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -31,6 +31,7 @@
 		DDB956F81C72200400B352D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDB956FA1C72200400B352D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDB957001C72219700B352D0 /* TPNS_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TPNS_iOS.framework; path = "../build/Debug-iphoneos/TPNS_iOS.framework"; sourceTree = "<group>"; };
+		FA359C5D1DB8C7270046906A /* TPNS_iOS Sample App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TPNS_iOS Sample App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,18 +39,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				255360D3270BA76B2F668066 /* libPods-TPNS_iOS Sample App.a in Frameworks */,
+				4DE8AD613AC0FD97E131A8D6 /* libPods-TPNS_iOS Sample App.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		90E97D33F818FD4234B4D392 /* Pods */ = {
+		0C8767C8CC91458C2740C89D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				268AB90E1AAA92BF410DB96D /* Pods-TPNS_iOS Sample App.debug.xcconfig */,
-				61EECE48E566757D0DE10114 /* Pods-TPNS_iOS Sample App.release.xcconfig */,
+				9E6915D90969847C061D815B /* Pods-TPNS_iOS Sample App.debug.xcconfig */,
+				8DA8CEE3C04D183CB5251F56 /* Pods-TPNS_iOS Sample App.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -60,7 +61,7 @@
 				DDB956E81C72200400B352D0 /* TPNS_iOS Sample App */,
 				DDB957021C7221A500B352D0 /* Frameworks */,
 				DDB956E71C72200400B352D0 /* Products */,
-				90E97D33F818FD4234B4D392 /* Pods */,
+				0C8767C8CC91458C2740C89D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +76,7 @@
 		DDB956E81C72200400B352D0 /* TPNS_iOS Sample App */ = {
 			isa = PBXGroup;
 			children = (
+				FA359C5D1DB8C7270046906A /* TPNS_iOS Sample App.entitlements */,
 				DDB956EC1C72200400B352D0 /* AppDelegate.h */,
 				DDB956ED1C72200400B352D0 /* AppDelegate.m */,
 				DDB956EF1C72200400B352D0 /* ViewController.h */,
@@ -100,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				DDB957001C72219700B352D0 /* TPNS_iOS.framework */,
-				812DA52D85C47177433C110F /* libPods-TPNS_iOS Sample App.a */,
+				2DE520CB5A6DEDA5274A36E5 /* libPods-TPNS_iOS Sample App.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,12 +114,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDB956FD1C72200400B352D0 /* Build configuration list for PBXNativeTarget "TPNS_iOS Sample App" */;
 			buildPhases = (
-				73560ED90770937A5C2F0FC0 /* Check Pods Manifest.lock */,
+				91F154CEDDF29C29DD858AF4 /* [CP] Check Pods Manifest.lock */,
+				FA6064F41DC0E46E009AA7EB /* Versionnumber */,
 				DDB956E21C72200400B352D0 /* Sources */,
 				DDB956E31C72200400B352D0 /* Frameworks */,
 				DDB956E41C72200400B352D0 /* Resources */,
-				277889F21A76C75C8BA2F6A2 /* Embed Pods Frameworks */,
-				E84FC081437319ACD5E2F3C6 /* Copy Pods Resources */,
+				45DD344DECC7BAF4CB16B533 /* [CP] Embed Pods Frameworks */,
+				2A22693A4208FD406C216C62 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,12 +137,12 @@
 		DDB956DE1C72200400B352D0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Deutsche Telekom AG";
 				TargetAttributes = {
 					DDB956E51C72200400B352D0 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 7M7855TPZB;
+						DevelopmentTeam = VZVFUQTSQC;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -180,14 +183,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		277889F21A76C75C8BA2F6A2 /* Embed Pods Frameworks */ = {
+		2A22693A4208FD406C216C62 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45DD344DECC7BAF4CB16B533 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,14 +213,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		73560ED90770937A5C2F0FC0 /* Check Pods Manifest.lock */ = {
+		91F154CEDDF29C29DD858AF4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,20 +228,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E84FC081437319ACD5E2F3C6 /* Copy Pods Resources */ = {
+		FA6064F41DC0E46E009AA7EB /* Versionnumber */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = Versionnumber;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TPNS_iOS Sample App/Pods-TPNS_iOS Sample App-resources.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "#!/bin/bash\n\n# This script automatically sets the version and short version string of\n# an Xcode project from the Git repository containing the project.\n#\n\nset -o errexit\nset -o nounset\n\nINFO_PLIST_BUILD_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nINFO_PLIST_SOURCE_PATH=\"${INFOPLIST_FILE}\"\n\nBUILD=$(git rev-list --all --count)\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${BUILD}\" \"$INFO_PLIST_BUILD_PATH\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${BUILD}\" \"$INFO_PLIST_SOURCE_PATH\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -273,8 +290,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -316,8 +335,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -342,29 +363,35 @@
 		};
 		DDB956FE1C72200400B352D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 268AB90E1AAA92BF410DB96D /* Pods-TPNS_iOS Sample App.debug.xcconfig */;
+			baseConfigurationReference = 9E6915D90969847C061D815B /* Pods-TPNS_iOS Sample App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Björn Richter (QJ5CZ849XQ)";
+				CODE_SIGN_ENTITLEMENTS = "TPNS_iOS Sample App/TPNS_iOS Sample App.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carl Jahn (V8VV58AR5X)";
+				DEVELOPMENT_TEAM = VZVFUQTSQC;
 				INFOPLIST_FILE = "TPNS_iOS Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.proventa.intern.PUNOtest;
+				PRODUCT_BUNDLE_IDENTIFIER = de.telekom.intern.homer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bc12b638-de42-4ade-b823-f99686eb64ea";
+				PROVISIONING_PROFILE = "1a5c2ffc-0801-4f26-9934-32af5cef74e1";
+				PROVISIONING_PROFILE_SPECIFIER = "NBSC Homer Dev";
 			};
 			name = Debug;
 		};
 		DDB956FF1C72200400B352D0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61EECE48E566757D0DE10114 /* Pods-TPNS_iOS Sample App.release.xcconfig */;
+			baseConfigurationReference = 8DA8CEE3C04D183CB5251F56 /* Pods-TPNS_iOS Sample App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Proventa AG (JVK74BEX46)";
+				CODE_SIGN_ENTITLEMENTS = "TPNS_iOS Sample App/TPNS_iOS Sample App.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Deutsche Telekom AG";
+				DEVELOPMENT_TEAM = VZVFUQTSQC;
 				INFOPLIST_FILE = "TPNS_iOS Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.proventa.intern.PUNOtest;
+				PRODUCT_BUNDLE_IDENTIFIER = de.telekom.intern.homer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4f756346-a6bc-4aca-9cb0-14fd6e572fe5";
+				PROVISIONING_PROFILE = "341c07c8-fed2-46a4-b258-c77109d30fe1";
+				PROVISIONING_PROFILE_SPECIFIER = "NBSC Homer Dist";
 			};
 			name = Release;
 		};
