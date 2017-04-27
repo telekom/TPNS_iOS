@@ -124,7 +124,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     }
     
     _deviceId = deviceId;
-    [[self class] setUserDefaultsValue:_appKey forKey:DTPNSUserDefaultsDeviceID];
+    [[self class] setUserDefaultsValue:_deviceId forKey:DTPNSUserDefaultsDeviceID];
 }
 
 #pragma mark - Block Callback Helper methods
