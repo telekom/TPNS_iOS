@@ -8,4 +8,6 @@ Pod::Spec.new do |spec|
   spec.source              = { :git => 'https://github.com/dtag-dbu/TPNS_iOS.git', :tag => spec.version }
   spec.requires_arc        = true
   spec.source_files        = 'TPNS_iOS/*.{h,m}'
+  spec.frameworks          = 'UIKit', 'Foundation' 
+  spec.platform            = :ios
 end
