@@ -20,7 +20,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSURL *serverURL;
 @property (nonatomic, strong) NSString *appKey;
-@property (nonatomic, strong, readonly) NSString *deviceId;
 @property (nonatomic, assign) BOOL registrationInProgress;
 
 @end
@@ -205,7 +204,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                 
                                 self.serverURL = nil;
                                 self.appKey = nil;
-                                self.deviceId = nil;
+                                
                                 
                                 NSString *originalErrorMessage = responseData[@"message"];
                                 NSError *customError = [NSError TPNS_httpErrorWithCode:response.statusCode originalErrorMessage:originalErrorMessage];
@@ -238,7 +237,6 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                          
                           if (error == nil && 200 == response.statusCode) {
                               self.serverURL = nil;
-                              self.deviceId = nil;
                               self.appKey = nil;
                               self.registrationInProgress = NO;
 
