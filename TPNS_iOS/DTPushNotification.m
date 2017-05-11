@@ -42,7 +42,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 
 - (BOOL)isRegistered {
 
-    return (self.deviceId.length > 0);
+    return (self.appKey.length > 0 && self.serverURL.absoluteString.length > 0);
 }
 
 #pragma mark - Class Helper Methods
