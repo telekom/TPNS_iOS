@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Unregisters the device with TPNS
 
- @param A block object to be executed when unregistration is completed. This block has no return value and takes one arguments: An an NSError object which is returned, if unregistration failed and nil otherwise.
+ @param completion block object to be executed when unregistration is completed. This block has no return value and takes one arguments: An an NSError object which is returned, if unregistration failed and nil otherwise.
 
  */
 - (void)unregisterWithCompletion:(void(^)(NSError * _Nullable error)) completion;
