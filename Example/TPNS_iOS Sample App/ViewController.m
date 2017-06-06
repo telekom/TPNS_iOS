@@ -24,7 +24,12 @@
     [super viewDidLoad];
     
     self.deviceIdTextfield.delegate = self;
-    self.deviceIdTextfield.text = [DTPushNotification sharedInstance].deviceId;
+    
+    DTPushNotification *sharedInstance = [DTPushNotification sharedInstance];
+    if (sharedInstance.isRegistered) {
+        self.deviceIdTextfield.text = [DTPushNotification sharedInstance].deviceId;
+    }
+    
 }
 
 - (BOOL)canBecomeFirstResponder {
