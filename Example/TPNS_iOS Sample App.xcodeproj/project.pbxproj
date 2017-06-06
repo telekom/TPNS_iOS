@@ -225,7 +225,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FA6064F41DC0E46E009AA7EB /* Versionnumber */ = {
@@ -240,7 +240,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n# This script automatically sets the version and short version string of\n# an Xcode project from the Git repository containing the project.\n#\n\nset -o errexit\nset -o nounset\n\nINFO_PLIST_BUILD_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nINFO_PLIST_SOURCE_PATH=\"${INFOPLIST_FILE}\"\n\nBUILD=$(git rev-list --all --count)\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${BUILD}\" \"$INFO_PLIST_BUILD_PATH\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${BUILD}\" \"$INFO_PLIST_SOURCE_PATH\"";
+			shellScript = "#!/bin/bash\n\n# This script automatically sets the version and short version string of\n# an Xcode project from the Git repository containing the project.\n#\n\nset -o errexit\nset -o nounset\n\nINFO_PLIST_BUILD_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nINFO_PLIST_SOURCE_PATH=\"${INFOPLIST_FILE}\"\n\nBUILD=$(git rev-list --all --count)\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${BUILD}\" \"$INFO_PLIST_SOURCE_PATH\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -367,14 +367,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TPNS_iOS Sample App/TPNS_iOS Sample App.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Carl Jahn (V8VV58AR5X)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carl Jahn (V8VV58AR5X)";
 				DEVELOPMENT_TEAM = VZVFUQTSQC;
 				INFOPLIST_FILE = "TPNS_iOS Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.telekom.intern.homer;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.telekom.intern.TPNS-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1a5c2ffc-0801-4f26-9934-32af5cef74e1";
-				PROVISIONING_PROFILE_SPECIFIER = "NBSC Homer Dev";
+				PROVISIONING_PROFILE = "7751a44a-33a2-4df0-98e5-149919f6b048";
+				PROVISIONING_PROFILE_SPECIFIER = "TPNS Test App";
 			};
 			name = Debug;
 		};
@@ -384,14 +385,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TPNS_iOS Sample App/TPNS_iOS Sample App.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Deutsche Telekom AG";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Deutsche Telekom AG";
 				DEVELOPMENT_TEAM = VZVFUQTSQC;
 				INFOPLIST_FILE = "TPNS_iOS Sample App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.telekom.intern.homer;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.telekom.intern.TPNS-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "341c07c8-fed2-46a4-b258-c77109d30fe1";
-				PROVISIONING_PROFILE_SPECIFIER = "NBSC Homer Dist";
+				PROVISIONING_PROFILE = "7751a44a-33a2-4df0-98e5-149919f6b048";
+				PROVISIONING_PROFILE_SPECIFIER = "TPNS Test App InHouse";
 			};
 			name = Release;
 		};
