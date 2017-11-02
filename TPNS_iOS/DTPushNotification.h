@@ -28,6 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly, getter = isRegistered) BOOL registered;
 
 /**
+ Method to check if the current device is already `registered` for a specific token
+ */
+- (BOOL)isRegisteredForPushToken:(NSData *)pushToken;
+
+/**
  Registers the device with TPNS
 
  @param url The URL string of the TPNS server

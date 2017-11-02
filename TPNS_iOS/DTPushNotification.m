@@ -13,6 +13,7 @@
 static NSString *DTPNSUserDefaultsServerURLString = @"DTPNSUserDefaultsServerURLString";
 static NSString *DTPNSUserDefaultsAppKey          = @"DTPNSUserDefaultsAppKey";
 static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID";
+static NSString *DTPNSUserDefaultsPushToken       = @"DTPNSUserDefaultsPushToken";
 
 
 @interface DTPushNotification (/*privat*/)
@@ -20,6 +21,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSURL *serverURL;
 @property (nonatomic, strong) NSString *appKey;
+@property (nonatomic, strong) NSData *pushToken;
 @property (nonatomic, assign) BOOL registrationInProgress;
 
 @end
@@ -28,6 +30,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 @implementation DTPushNotification
 @synthesize serverURL = _serverURL;
 @synthesize appKey    = _appKey;
+@synthesize pushToken = _pushToken;
 
 - (id)init {
     
@@ -41,12 +44,17 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
 }
 
 - (BOOL)isRegistered {
-
+    
     return (self.appKey.length > 0 && self.serverURL.absoluteString.length > 0);
 }
 
+- (BOOL)isRegisteredForPushToken:(NSData *)pushToken {
+
+    return (self.isRegistered && [pushToken isEqual:self.pushToken]);
+}
+
 #pragma mark - Class Helper Methods
-+ (NSString *)userDefaultsValueForKey:(NSString *)key {
++ (id)userDefaultsValueForKey:(NSString *)key {
     NSParameterAssert(key.length);
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -116,6 +124,23 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     return deviceId;
 }
 
+- (void)setPushToken:(NSData *)pushToken {
+    if (_pushToken == pushToken) {
+        return;
+    }
+    
+    _pushToken = pushToken;
+    [[self class] setUserDefaultsValue:_pushToken forKey:DTPNSUserDefaultsPushToken];
+}
+
+- (NSData *)pushToken {
+    if (nil == _pushToken) {
+        _pushToken = [[self class] userDefaultsValueForKey:DTPNSUserDefaultsPushToken];
+    }
+    
+    return _pushToken;
+}
+
 #pragma mark - Block Callback Helper methods
 - (void)callRegisterCompletion:(void(^)(NSString *deviceID, NSError * _Nullable error))completion deviceID:(NSString *)deviceID error:(NSError *)error {
     
@@ -158,7 +183,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     NSParameterAssert(appKey.length > 0);
     NSParameterAssert(pushToken.length > 0);
     
-    if (self.registrationInProgress || self.isRegistered) {
+    if (self.registrationInProgress || [self isRegisteredForPushToken:pushToken]) {
         
         NSInteger errorCode = self.registrationInProgress ? TPNSErrorCodeRegistrationIsAlreadyInProgress : TPNSErrorCodeUnregisterBeforeYouRegisterAgain;
         NSError *customError = [NSError TPNS_errorWithCode:errorCode];
@@ -176,6 +201,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
     
     self.serverURL = url;
     self.appKey = appKey;
+    self.pushToken = pushToken;
     
     NSString *applicationType = sandbox ? DTPNSApplicationTypeiOSSandbox : DTPNSApplicationTypeiOS;
     
@@ -204,6 +230,7 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                                 
                                 self.serverURL = nil;
                                 self.appKey = nil;
+                                self.pushToken = nil;
                                 
                                 
                                 NSString *originalErrorMessage = responseData[@"message"];
@@ -238,8 +265,9 @@ static NSString *DTPNSUserDefaultsDeviceID        = @"DTPNSUserDefaultsDeviceID"
                           if (error == nil && 200 == response.statusCode) {
                               self.serverURL = nil;
                               self.appKey = nil;
+                              self.pushToken = nil;
                               self.registrationInProgress = NO;
-
+                              
                           } else {
                               //According to TPNS Backend Dev Team Server ALWAYS send a 200,
                               //even, if the device has never been registered, or the
