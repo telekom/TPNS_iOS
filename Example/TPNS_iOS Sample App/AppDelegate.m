@@ -44,6 +44,11 @@
     }
 }
 
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    
+    NSLog(@"%s %@", __FUNCTION__, error);
+}
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo {
     
     NSLog(@"%s %@", __FUNCTION__, userInfo);
@@ -62,7 +67,7 @@
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response
-         withCompletionHandler:(void(^)())completionHandler {
+         withCompletionHandler:(void(^)(void))completionHandler {
     
     NSLog(@"%s %@", __FUNCTION__, response.notification);
     completionHandler();

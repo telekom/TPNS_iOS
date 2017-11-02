@@ -61,7 +61,7 @@
 }
 
 - (IBAction)registerForRemoteNotifications:(id)sender {
-    
+        
     // Register the supported interaction types.
     UIApplication *application = [UIApplication sharedApplication];
     
@@ -74,35 +74,19 @@
     };
     
     
-    if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_9_x_Max) {
-        
-        UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-        UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [application registerUserNotificationSettings:mySettings];
-    
-        [application registerForRemoteNotifications];
-    
-    }
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
-    else {
-    
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert)
-                              completionHandler:^(BOOL granted, NSError * _Nullable error) {
-                                  
-                                  if (nil == error) {
-                                      
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert)
+                          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                              
+                              if (nil == error) {
+
+                                  dispatch_async(dispatch_get_main_queue(), ^{
                                       [[UIApplication sharedApplication] registerForRemoteNotifications];
-                                  }
-                                  
-                              }];
-        
-    }
-#endif
-
+                                  });
+                              }
+                              
+                          }];
     
-    
-
 }
 
 - (void)startRegisterCallWithDeviceToken:(NSData *)deviceToken {
@@ -115,7 +99,7 @@
     
     DTPushNotification *tpns = [DTPushNotification sharedInstance];
     [tpns registerWithURL:[NSURL URLWithString:DTPNSURLStringPreProduction]
-                   appKey:@"YOUR APP KEY"
+                   appKey:@"testApp"
                 pushToken:deviceToken
      additionalParameters:nil
                   sandbox:sandbox
@@ -125,7 +109,7 @@
                    NSString *message = [NSString stringWithFormat:@"The device was successfully registered with TPNS."];
                    
                    if (error == nil) {
-                        self.deviceIdTextfield.text = deviceID;
+                       self.deviceIdTextfield.text = deviceID;
                    }
                    
                    if (error) {
@@ -156,7 +140,7 @@
 }
 
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
-
+    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
                                                                    message:message
                                                             preferredStyle:UIAlertControllerStyleAlert];
@@ -170,3 +154,4 @@
 }
 
 @end
+
