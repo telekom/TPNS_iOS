@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                = 'TPNS_iOS'
-  spec.version             = '1.0.2'
+  spec.version             = '1.1.0'
   spec.license             = 'MIT'
   spec.authors             = { 'Deutsche Telekom AG' => 'tpns@telekom.de' }
   spec.homepage            = 'http://telekom.de'
@@ -8,6 +8,6 @@ Pod::Spec.new do |spec|
   spec.source              = { :git => 'https://github.com/dtag-dbu/TPNS_iOS.git', :tag => spec.version }
   spec.requires_arc        = true
   spec.source_files        = 'TPNS_iOS/*.{h,m}'
-  spec.frameworks          = 'UIKit', 'Foundation' 
+  spec.frameworks          = 'UIKit', 'Foundation'
   spec.platform            = :ios
 end
