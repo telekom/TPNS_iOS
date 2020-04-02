@@ -26,6 +26,9 @@ static NSString *DTPNSUserDefaultsPushToken       = @"DTPNSUserDefaultsPushToken
 
 @end
 
+@interface NSData (tokenExtension)
+- (NSString *) tokenString;
+@end
 
 @implementation DTPushNotification
 @synthesize serverURL = _serverURL;
@@ -196,8 +199,7 @@ static NSString *DTPNSUserDefaultsPushToken       = @"DTPNSUserDefaultsPushToken
     
     self.registrationInProgress = YES;
     
-    NSCharacterSet *trimSet = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
-    NSString *pushTokenString = [[[pushToken description] stringByTrimmingCharactersInSet:trimSet] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *pushTokenString = [pushToken tokenString];
     
     self.serverURL = url;
     self.appKey = appKey;
@@ -279,6 +281,21 @@ static NSString *DTPNSUserDefaultsPushToken       = @"DTPNSUserDefaultsPushToken
     }];
     
     
+}
+
+@end
+
+@implementation NSData (tokenExtension)
+
+- (NSString *) tokenString {
+    NSMutableString *token = [NSMutableString new];
+    const unsigned char *bytes = self.bytes;
+    NSInteger index = 0;
+
+    for (index = 0; index < self.length; ++index) {
+        [token appendFormat:@"%02lX", (unsigned long)bytes[index]];
+    }
+    return [token lowercaseString];
 }
 
 @end
